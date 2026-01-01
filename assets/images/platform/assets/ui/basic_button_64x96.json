@@ -1,0 +1,67 @@
+{ "frames": {
+   "basic_button_64x96 (Button Base) 0.aseprite": {
+    "frame": { "x": 8, "y": 8, "w": 64, "h": 96 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 96 },
+    "sourceSize": { "w": 64, "h": 96 },
+    "duration": 100
+   },
+   "basic_button_64x96 (Button Base) 1.aseprite": {
+    "frame": { "x": 80, "y": 8, "w": 64, "h": 96 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 96 },
+    "sourceSize": { "w": 64, "h": 96 },
+    "duration": 100
+   },
+   "basic_button_64x96 (Button Base) 2.aseprite": {
+    "frame": { "x": 152, "y": 8, "w": 64, "h": 96 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 96 },
+    "sourceSize": { "w": 64, "h": 96 },
+    "duration": 100
+   },
+   "basic_button_64x96 (Coach Logo) 0.aseprite": {
+    "frame": { "x": 8, "y": 112, "w": 64, "h": 96 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 96 },
+    "sourceSize": { "w": 64, "h": 96 },
+    "duration": 100
+   },
+   "basic_button_64x96 (Coach Logo) 1.aseprite": {
+    "frame": { "x": 80, "y": 112, "w": 64, "h": 96 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 96 },
+    "sourceSize": { "w": 64, "h": 96 },
+    "duration": 100
+   },
+   "basic_button_64x96 (Coach Logo) 2.aseprite": {
+    "frame": { "x": 152, "y": 112, "w": 64, "h": 96 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 96 },
+    "sourceSize": { "w": 64, "h": 96 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.10.1-x64",
+  "image": "basic_button_64x96.png",
+  "format": "RGBA8888",
+  "size": { "w": 224, "h": 216 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Button Base", "opacity": 255, "blendMode": "normal" },
+   { "name": "Coach Logo", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
