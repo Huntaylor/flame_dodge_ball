@@ -78,16 +78,19 @@ groups:
 
   # player
   - paths:
+      - assets/images/players/player/json
       - assets/images/players/player
       - assets/images/players
     class_name: PlayerAnimations
     types: [.json]
   - paths:
+      - assets/images/players/player/json
       - assets/images/players/player
       - assets/images/players
     class_name: PlayerImages
     types: [.png]
   - paths:
+      - assets/images/players/player/json
       - assets/images/players/player
       - assets/images/players
     class_name: PlayerSprites

@@ -66,7 +66,9 @@ $content''');
 
     final content = file.readAsStringSync();
 
-    final updated = content.replaceAll("'assets/", "'");
+    final updated = content
+        .replaceAll("'assets/", "'")
+        .replaceAll("'images/", "'");
 
     file.writeAsStringSync(updated);
   }
