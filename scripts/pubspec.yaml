@@ -6,6 +6,7 @@ environment:
 
 dependencies:
   file: ^7.0.1
+  yaml_edit: ^2.2.3
 
 executables:
   clean_assets: clean_assets

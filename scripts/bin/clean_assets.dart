@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:file/file.dart';
 import 'package:file/local.dart';
+import 'package:yaml_edit/yaml_edit.dart';
 
 const fs = LocalFileSystem();
 
@@ -60,11 +61,22 @@ $content''');
 
   print('Formatting done');
 
+  final dirs = <String>{};
+
+  final assetPathPattern = RegExp(r"'(assets\/.*)\/");
+
   print('Updating asset paths');
   for (final file in files) {
     if (file is! File) continue;
 
     final content = file.readAsStringSync();
+
+    final matches = assetPathPattern.allMatches(content);
+    for (final match in matches) {
+      if (match.group(1) case final String str) {
+        dirs.add(str);
+      }
+    }
 
     final updated = content
         .replaceAll("'assets/", "'")
@@ -72,6 +84,14 @@ $content''');
 
     file.writeAsStringSync(updated);
   }
+
+  fs.currentDirectory = root;
+
+  final pubspec = fs.file('pubspec.yaml');
+  final yaml = YamlEditor(pubspec.readAsStringSync())
+    ..update(['flutter', 'assets'], dirs.toList()..sort());
+
+  pubspec.writeAsStringSync(yaml.toString());
 
   print('Complete!');
 }
