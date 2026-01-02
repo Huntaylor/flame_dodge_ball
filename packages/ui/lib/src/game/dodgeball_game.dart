@@ -3,28 +3,32 @@ import 'dart:async';
 import 'package:application/application.dart';
 import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
+import 'package:flame/events.dart';
 import 'package:flame/game.dart';
+import 'package:flutter/material.dart';
+import 'package:ui/src/game/entities/player/player.dart';
 
-class DodgeballGame extends FlameGame {
+class DodgeballGame extends FlameGame with HasKeyboardHandlerComponents {
   DodgeballGame({required this.gameBloc});
 
-  final double gameWidth = 1920;
-  final double gameHeight = 1027;
-
   final GameBloc gameBloc;
+  final double gameWidth = 640;
+  final double gameHeight = 320;
+
+  late Player player1;
+
+  @override
+  Color backgroundColor() {
+    return Colors.orange;
+  }
 
   @override
   FutureOr<void> onLoad() async {
     await images.loadAllImages();
 
     _cameraSetup();
-
-    add(
-      TextComponent(
-        text: 'Hello World',
-        position: Vector2(gameWidth / 2, gameHeight / 2),
-      ),
-    );
+    player1 = Player(position: Vector2(gameWidth / 2, gameHeight / 2));
+    await add(player1);
 
     await _setupLevel();
 

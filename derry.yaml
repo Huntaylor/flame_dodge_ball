@@ -17,6 +17,8 @@ spider: cd scripts; dart run _scripts:clean_assets
 
 webbuild: flutter build web --release --wasm
 
+winrun: flutter run -d windows
+
 setup-mason:
   - |
     cd mason/mason_templates
