@@ -7,30 +7,37 @@ Hook main() {
       SequentialTasks(
         tasks: [
           ShellTask(
-            include: [Glob('**.dart')],
+            include: [Glob('**/packages/application/**.dart')],
             workingDirectory: 'packages/application',
             commands: (files) {
               return ['dart run build_runner build'];
             },
           ),
           ShellTask(
-            include: [Glob('**.dart')],
+            include: [Glob('**/packages/domain/**.dart')],
             workingDirectory: 'packages/domain',
             commands: (files) {
               return ['dart run build_runner build'];
             },
           ),
           ShellTask(
-            include: [Glob('**.dart')],
+            include: [Glob('**/packages/data/**.dart')],
             workingDirectory: 'packages/data',
             commands: (files) {
               return ['dart run build_runner build'];
             },
           ),
+          ShellTask(
+            include: [Glob('**/packages/assets/**.dart')],
+            workingDirectory: 'packages/assets',
+            commands: (files) {
+              return ['dart run _scripts:clean_assets'];
+            },
+          ),
           ParallelTasks(
             tasks: [
               ShellTask(
-                include: [Glob('**.dart')],
+                include: [Glob('**/packages/ui/**.dart')],
                 commands: (files) {
                   return ['barreler build --config barreler.yaml'];
                 },
