@@ -4,7 +4,7 @@ part of 'resources.dart';
 class BossAnimations {
   BossAnimations._();
 
-  static const String bossIdle = 'boss/animations/boss_idle.json';
-  static const String bossRunning = 'boss/animations/boss_running.json';
-  static const String bossThrowing = 'boss/animations/boss_throwing.json';
+  static const String bossIdle = 'animations/boss/boss_idle.json';
+  static const String bossRunning = 'animations/boss/boss_running.json';
+  static const String bossThrowing = 'animations/boss/boss_throwing.json';
 }

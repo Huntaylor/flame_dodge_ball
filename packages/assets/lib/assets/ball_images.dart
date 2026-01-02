@@ -4,11 +4,11 @@ part of 'resources.dart';
 class BallImages {
   BallImages._();
 
-  static const String bossBall = 'dodge_balls/images/boss_ball.png';
-  static const String enemyBall = 'dodge_balls/images/enemy_ball.png';
-  static const String friendlyBall = 'dodge_balls/images/friendly_ball.png';
-  static const String giantBall = 'dodge_balls/images/giant_ball.png';
-  static const String regularBall = 'dodge_balls/images/regular_ball.png';
-  static const String speedBall = 'dodge_balls/images/speed_ball.png';
-  static const String splitterBall = 'dodge_balls/images/splitter_ball.png';
+  static const String bossBall = 'dodge_balls/boss_ball.png';
+  static const String enemyBall = 'dodge_balls/enemy_ball.png';
+  static const String friendlyBall = 'dodge_balls/friendly_ball.png';
+  static const String giantBall = 'dodge_balls/giant_ball.png';
+  static const String regularBall = 'dodge_balls/regular_ball.png';
+  static const String speedBall = 'dodge_balls/speed_ball.png';
+  static const String splitterBall = 'dodge_balls/splitter_ball.png';
 }

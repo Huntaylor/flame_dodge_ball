@@ -35,18 +35,19 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/animations/boss/
+    - assets/animations/platform/
+    - assets/animations/players/
     - assets/audio/
-    - assets/images/boss/animations/
-    - assets/images/boss/images/
-    - assets/images/boss/sprites/
-    - assets/images/dodge_balls/images/
-    - assets/images/dodge_balls/sprites/
-    - assets/images/enemies/sprites/
+    - assets/images/boss/
+    - assets/images/dodge_balls/
     - assets/images/platform/
-    - assets/images/platform/assets/ui/
     - assets/images/players/
-    - assets/images/players/player/
-    - assets/images/players/player/json/
+    - assets/sprites/boss/
+    - assets/sprites/dodge_balls/
+    - assets/sprites/enemies/
+    - assets/sprites/platform/
+    - assets/sprites/players/
 
 dependency_overrides:
   analyzer: ^9.0.0

@@ -31,10 +31,10 @@ package: ../packages/assets/lib/assets
 
 groups:
   # dodge balls
-  - path: assets/images/dodge_balls/sprites
+  - path: assets/sprites/dodge_balls
     class_name: BallSprites
     types: [.aseprite]
-  - path: assets/images/dodge_balls/images
+  - path: assets/images/dodge_balls
     class_name: BallImages
     types: [.png]
 
@@ -44,54 +44,39 @@ groups:
     types: [.mp3]
 
   # boss
-  - path: assets/images/boss/images
+  - path: assets/images/boss
     class_name: BossImages
     types: [.png]
-  - path: assets/images/boss/sprites
+  - path: assets/sprites/boss
     class_name: BossSprites
     types: [.aseprite]
-  - path: assets/images/boss/animations
+  - path: assets/animations/boss
     class_name: BossAnimations
     types: [.json]
 
   # enemies
-  - path: assets/images/enemies/sprites
+  - path: assets/sprites/enemies
     class_name: EnemySprites
     types: [.aseprite]
 
   # platform
-  - paths:
-      - assets/images/platform/assets/ui
-      - assets/images/platform
+  - path: assets/animations/platform
     class_name: PlatformAnimations
     types: [.json]
-  - paths:
-      - assets/images/platform/assets/ui
-      - assets/images/platform
+  - path: assets/images/platform
     class_name: PlatformImages
     types: [.png]
-  - paths:
-      - assets/images/platform/assets/ui
-      - assets/images/platform
+  - path: assets/sprites/platform
     class_name: PlatformSprites
     types: [.aseprite]
 
   # player
-  - paths:
-      - assets/images/players/player/json
-      - assets/images/players/player
-      - assets/images/players
+  - path: assets/animations/players
     class_name: PlayerAnimations
     types: [.json]
-  - paths:
-      - assets/images/players/player/json
-      - assets/images/players/player
-      - assets/images/players
+  - path: assets/images/players
     class_name: PlayerImages
     types: [.png]
-  - paths:
-      - assets/images/players/player/json
-      - assets/images/players/player
-      - assets/images/players
+  - path: assets/sprites/players
     class_name: PlayerSprites
     types: [.aseprite]
