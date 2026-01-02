@@ -15,8 +15,17 @@ class MusicBloc extends Bloc<MusicEvent, MusicState> {
 
   final MusicRepo _musicRepo;
 
+  final List<Music> _music = [];
+
   Future<void> _play(_Play event, Emitter<MusicState> emit) async {
     await _musicRepo.play(event.music);
+    _music.add(event.music);
     emit(_Ready(event.music));
+  }
+
+  @override
+  Future<void> close() async {
+    await _musicRepo.stop();
+    await super.close();
   }
 }

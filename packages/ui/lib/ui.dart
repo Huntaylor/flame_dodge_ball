@@ -8,6 +8,7 @@ export 'src/game/dodgeball_game.dart';
 export 'src/game/entities/enemy/behavior/enemy_controller_behavior.dart';
 export 'src/game/entities/enemy/enemy.dart';
 export 'src/game/entities/player/behavior/player_controller_behavior.dart';
+export 'src/game/entities/player/behavior/player_state_behavior.dart';
 export 'src/game/entities/player/player.dart';
 export 'src/game/level/level.dart';
 export 'src/game/overlays/pause_overlay.dart';

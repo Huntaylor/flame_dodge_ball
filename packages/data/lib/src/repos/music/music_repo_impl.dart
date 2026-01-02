@@ -12,4 +12,9 @@ class MusicRepoImpl implements MusicRepo {
   Future<void> play(Music music) async {
     await _player.play(AssetSource(music.path));
   }
+
+  @override
+  Future<void> stop() async {
+    await _player.stop();
+  }
 }

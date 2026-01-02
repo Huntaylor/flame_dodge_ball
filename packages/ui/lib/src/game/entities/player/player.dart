@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:assets/assets/resources.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
 import 'package:ui/src/game/dodgeball_game.dart';
@@ -18,9 +19,9 @@ class Player extends SpriteAnimationComponent
 
   @override
   FutureOr<void> onLoad() async {
-    final image = await game.images.load('players/player/player_1_running.png');
+    final image = await game.images.load(PlayerImages.player1Running);
     final jsonData = await game.assets.readJson(
-      'images/players/player/json/player_1_running.json',
+      PlayerAnimations.player1Running,
     );
 
     animation = SpriteAnimation.fromAsepriteData(image, jsonData);
