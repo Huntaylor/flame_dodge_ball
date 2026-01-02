@@ -1,7 +1,7 @@
-part of '../ball_type.dart';
+part of '../ball.dart';
 
-class FriendlyBall extends BallType {
-  const FriendlyBall();
+class FriendlyBall extends Ball {
+  const FriendlyBall({required super.owner});
 
   @override
   double get speed => 100;

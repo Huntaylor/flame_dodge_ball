@@ -30,12 +30,12 @@ class DodgeballGame extends FlameGame
     await images.loadAllImages();
 
     _cameraSetup();
-    player1 = Player(position: Vector2(gameWidth / 2, gameHeight / 2));
+    player1 = Player(Me(), position: Vector2(gameWidth / 2, gameHeight / 2));
     await add(player1);
 
     final ball = Dodgeball(
-      type: const RegularBall(),
-      position: Vector2(gameWidth / 2 - 10, gameHeight / 2 - 10),
+      RegularBall(owner: player1.actor),
+      position: Vector2(gameWidth / 2 - 10, gameHeight / 2 - 30),
     );
     await add(ball);
 

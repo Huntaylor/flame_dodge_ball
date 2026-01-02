@@ -5,6 +5,9 @@
 export 'src/enums/ball_type.dart';
 export 'src/enums/game_state.dart';
 export 'src/enums/music.dart';
-export 'src/models/balls/ball_type.dart';
+export 'src/models/actors/actor.dart';
+export 'src/models/actors/me.dart';
+export 'src/models/balls/ball.dart';
+export 'src/models/id.dart';
 export 'src/repos/music_repo.dart';
 export 'src/types/factory.dart';

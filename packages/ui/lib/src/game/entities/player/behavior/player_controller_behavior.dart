@@ -1,11 +1,10 @@
-import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
 import 'package:flutter/src/services/hardware_keyboard.dart';
 import 'package:ui/ui.dart';
 
 class PlayerControllerBehavior extends Behavior<Player>
-    with HasGameReference<DodgeballGame>, KeyboardHandler, CollisionCallbacks {
+    with HasGameReference<DodgeballGame>, KeyboardHandler {
   @override
   bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
     final isKeyRepeat = event is KeyRepeatEvent;
@@ -37,11 +36,5 @@ class PlayerControllerBehavior extends Behavior<Player>
       }
     }
     return super.onKeyEvent(event, keysPressed);
-  }
-
-  @override
-  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
-    // print('PlayerControllerBehavior onCollision');
-    super.onCollision(intersectionPoints, other);
   }
 }

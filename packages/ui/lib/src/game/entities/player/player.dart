@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:assets/assets/resources.dart';
+import 'package:domain/domain.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
@@ -9,11 +9,17 @@ import 'package:ui/src/game/entities/player/behavior/player_controller_behavior.
 
 class Player extends SpriteAnimationComponent
     with HasGameReference<DodgeballGame>, EntityMixin, CollisionCallbacks {
-  Player({super.animation, super.position, super.priority, super.autoResize});
+  Player(
+    this.actor, {
+    super.animation,
+    super.position,
+    super.priority,
+    super.autoResize,
+  });
+
+  final Actor actor;
 
   final Vector2 direction = Vector2.zero();
-
-  double moveSpeed = 200;
 
   late final PlayerControllerBehavior controllerBehavior =
       findBehavior<PlayerControllerBehavior>();
@@ -22,12 +28,10 @@ class Player extends SpriteAnimationComponent
   FutureOr<void> onLoad() async {
     debugMode = true;
 
-    final image = await game.images.load(PlayerImages.player1Running);
-    final jsonData = await game.assets.readJson(
-      PlayerAnimations.player1Running,
-    );
+    final image = await game.images.load(actor.image);
+    final jsonData = await game.assets.readJson(actor.animation);
 
-    add(RectangleHitbox(size: Vector2(32, 64)));
+    add(RectangleHitbox(size: Vector2(actor.size.width, actor.size.height)));
 
     animation = SpriteAnimation.fromAsepriteData(image, jsonData);
     _addBehaviors();
@@ -37,7 +41,7 @@ class Player extends SpriteAnimationComponent
 
   @override
   void update(double dt) {
-    final displacement = direction.normalized() * moveSpeed * dt;
+    final displacement = direction.normalized() * actor.speed * dt;
 
     position.add(displacement);
     super.update(dt);
