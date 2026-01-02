@@ -1,10 +1,14 @@
 import 'dart:async';
 
+import 'package:application/application.dart';
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:ui/src/game/dodgeball_game.dart';
 import 'package:zenrouter/zenrouter.dart';
 
 part 'menu_route.dart';
+part 'dodgeball_game_route.dart';
 part 'unknown_route.dart';
 
 abstract class GameRoute extends RouteTarget with RouteUnique {}
@@ -29,6 +33,7 @@ class GameCoordinator extends Coordinator<GameRoute> {
   FutureOr<GameRoute> parseRouteFromUri(Uri uri) {
     return switch (uri.pathSegments) {
       [] || ['/'] => MenuRoute(),
+      ['dodgeball_game'] => DodgeballGameRoute(),
       _ => UnknownRoute(),
     };
   }
