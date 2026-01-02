@@ -15,7 +15,7 @@ dirs:
     name: application
     include:
       - "**_bloc.dart"
-      - export: setup/setup.dart
+      - export: src/setup.dart
         show: setup
 
   # -- domain --
