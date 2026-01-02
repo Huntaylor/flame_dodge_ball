@@ -7,7 +7,6 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:ui/src/game/entities/dodgeball/dodgeball.dart';
 import 'package:ui/src/game/entities/player/player.dart';
 
 class DodgeballGame extends FlameGame
@@ -32,9 +31,6 @@ class DodgeballGame extends FlameGame
     _cameraSetup();
     player1 = Player(Me(), position: Vector2(gameWidth / 2, gameHeight / 2));
     await world.add(player1);
-
-    final ball = Dodgeball(RegularBall(owner: player1.actor));
-    await add(ball);
 
     await _setupLevel();
 

@@ -33,8 +33,6 @@ class Player extends SpriteAnimationComponent
 
   @override
   FutureOr<void> onLoad() async {
-    debugMode = true;
-
     final image = await game.images.load(actor.image);
     final jsonData = await game.assets.readJson(actor.animation);
 

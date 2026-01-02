@@ -22,7 +22,6 @@ class Dodgeball extends SpriteComponent
 
   @override
   FutureOr<void> onLoad() async {
-    debugMode = true;
     final image = await game.images.load(ball.image);
 
     sprite = Sprite(image);
