@@ -17,6 +17,7 @@ dirs:
       - "**_bloc.dart"
       - export: src/setup.dart
         show: setup
+      - export: src/utils/app_bloc_observer.dart
 
   # -- domain --
   - path: packages/domain/lib
@@ -32,6 +33,8 @@ dirs:
     name: ui
     include:
       - "**/*.dart"
+      - export: src/setup.dart
+        show: setup
     exclude:
       - "**/*_route.dart"
 
@@ -40,3 +43,5 @@ dirs:
     name: data
     include:
       - src/repos/**.dart
+      - export: src/setup.dart
+        show: setup

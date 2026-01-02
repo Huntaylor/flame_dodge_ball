@@ -14,4 +14,5 @@ export 'src/game/overlays/pause_overlay.dart';
 export 'src/routes/route.dart';
 export 'src/screens/menu/menu_screen.dart';
 export 'src/screens/settings/settings_screen.dart';
+export 'src/setup.dart' show setup;
 export 'src/views/main_menu_view.dart';

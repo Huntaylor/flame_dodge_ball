@@ -15,6 +15,8 @@ workspace:
 dependencies:
   application:
     path: packages/application
+  data:
+    path: packages/data
   domain:
     path: packages/domain
   flutter:
@@ -30,8 +32,10 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/audio/
 
 dependency_overrides:
-  analyzer: ^8.2.0
+  analyzer: ^9.0.0
 
 scripts: derry.yaml

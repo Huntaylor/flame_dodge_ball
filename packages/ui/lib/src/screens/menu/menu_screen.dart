@@ -13,6 +13,7 @@ class MenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => musicBloc()..events.play(Music.menu),
+      lazy: false,
       child: Scaffold(
         body: SafeArea(
           child: Column(

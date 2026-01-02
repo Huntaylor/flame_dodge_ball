@@ -5,3 +5,4 @@
 export 'src/blocs/game_bloc.dart';
 export 'src/blocs/music_bloc.dart';
 export 'src/setup.dart' show setup;
+export 'src/utils/app_bloc_observer.dart';

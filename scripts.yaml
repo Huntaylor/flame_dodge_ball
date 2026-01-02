@@ -23,19 +23,21 @@ build_runner:
     (command): ${{ dart }} run build_runner build --force-aot
     application: cd packages/application; ${{ build_runner.build }}
     domain: cd packages/domain; ${{ build_runner.build }}
+    data: cd packages/data; ${{ build_runner.build }}
 
   watch:
     (aliases): w
     (command): ${{ dart }} run build_runner watch --force-aot
     application: cd packages/application; ${{ build_runner.watch }}
     domain: cd packages/domain; ${{ build_runner.watch }}
+    data: cd packages/data; ${{ build_runner.watch }}
 
-clean: flutter clean && flutter pub get
-
-doc: flutter doctor -v
-
-full:
-  clean: flutter clean && flutter pub get && cd ios && pod deintegrate && pod install && cd ../
+clean:
+  ios:
+    - cd ios; pod deintegrate; rm -rf Podfile.lock
+    - flutter clean
+    - flutter pub get
+    - cd ios; pod install --repo-update
 
 init: flutterfire configure
 
