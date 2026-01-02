@@ -26,7 +26,10 @@ class Player extends SpriteAnimationComponent
 
   final Actor actor;
 
-  final Vector2 direction = Vector2.zero();
+  double moveSpeed = 200;
+
+  double horizontalMovement = 0;
+  double verticalMovement = 0;
 
   late final PlayerControllerBehavior controllerBehavior =
       findBehavior<PlayerControllerBehavior>();
@@ -48,7 +51,10 @@ class Player extends SpriteAnimationComponent
 
   @override
   void update(double dt) {
-    final displacement = direction.normalized() * actor.speed * dt;
+    final displacement =
+        Vector2(horizontalMovement, verticalMovement).normalized() *
+        moveSpeed *
+        dt;
 
     position.add(displacement);
 

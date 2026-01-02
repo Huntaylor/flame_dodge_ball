@@ -12,7 +12,7 @@ class PlayerControllerBehavior extends Behavior<Player>
       return true;
     }
 
-    if (_move(event) case true) {
+    if (_move(event, keysPressed) case true) {
       return true;
     }
 
@@ -35,36 +35,30 @@ class PlayerControllerBehavior extends Behavior<Player>
     return false;
   }
 
-  bool _move(KeyEvent event) {
+  bool _move(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
     if (event is KeyRepeatEvent) {
       return false;
     }
+    parent.horizontalMovement = 0;
+    parent.verticalMovement = 0;
+    final isLeftKeyPressed =
+        keysPressed.contains(LogicalKeyboardKey.keyA) ||
+        keysPressed.contains(LogicalKeyboardKey.arrowLeft);
+    final isRightKeyPressed =
+        keysPressed.contains(LogicalKeyboardKey.keyD) ||
+        keysPressed.contains(LogicalKeyboardKey.arrowRight);
+    final isUpKeyPressed =
+        keysPressed.contains(LogicalKeyboardKey.keyW) ||
+        keysPressed.contains(LogicalKeyboardKey.arrowLeft);
+    final isDownKeyPressed =
+        keysPressed.contains(LogicalKeyboardKey.keyS) ||
+        keysPressed.contains(LogicalKeyboardKey.arrowRight);
 
-    final isKeyDown = event is KeyDownEvent;
+    parent.horizontalMovement += isLeftKeyPressed ? -1 : 0;
+    parent.horizontalMovement += isRightKeyPressed ? 1 : 0;
+    parent.verticalMovement += isUpKeyPressed ? -1 : 0;
+    parent.verticalMovement += isDownKeyPressed ? 1 : 0;
 
-    if (!isKeyDown) {
-      parent.direction
-        ..x = 0
-        ..y = 0;
-    } else {
-      if (event.logicalKey == LogicalKeyboardKey.keyW ||
-          event.logicalKey == LogicalKeyboardKey.keyS) {
-        if (event.logicalKey == LogicalKeyboardKey.keyW) {
-          parent.direction.y = -1;
-        } else if (event.logicalKey == LogicalKeyboardKey.keyS) {
-          parent.direction.y = 1;
-        }
-      }
-      if (event.logicalKey == LogicalKeyboardKey.keyA ||
-          event.logicalKey == LogicalKeyboardKey.keyD) {
-        if (event.logicalKey == LogicalKeyboardKey.keyA) {
-          parent.direction.x = -1;
-        } else if (event.logicalKey == LogicalKeyboardKey.keyD) {
-          parent.direction.x = 1;
-        }
-      }
-    }
-
-    return true;
+    return super.onKeyEvent(event, keysPressed);
   }
 }

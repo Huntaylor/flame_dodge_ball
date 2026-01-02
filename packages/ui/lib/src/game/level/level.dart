@@ -5,7 +5,6 @@ import 'package:flame/components.dart';
 class Level extends World {
   @override
   FutureOr<void> onLoad() {
-    // hi
     return super.onLoad();
   }
 }
