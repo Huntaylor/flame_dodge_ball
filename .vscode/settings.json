@@ -1,0 +1,6 @@
+{
+    "explorer.fileNesting.patterns": {
+        "*_bloc.dart": "${capture}_event.dart, ${capture}_state.dart, ${capture}_bloc*.dart",
+        "*.dart": "${capture}.g.dart, ${capture}.freezed.dart, ${capture}.gen.dart",
+    }
+}
