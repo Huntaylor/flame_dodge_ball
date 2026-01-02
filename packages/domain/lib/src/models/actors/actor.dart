@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_getters_setters
+
 import 'package:domain/src/models/balls/ball.dart';
 import 'package:domain/src/models/id.dart';
 
@@ -15,6 +17,12 @@ abstract class Actor {
 
   bool get isDead => _health <= 0;
   bool get isAlive => !isDead;
+
+  ({double x, double y}) get position => _position;
+  ({double x, double y}) _position = (x: 0, y: 0);
+  set position(({double x, double y}) value) {
+    _position = value;
+  }
 
   final List<Id> _hitByIds = [];
 

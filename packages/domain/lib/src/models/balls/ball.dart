@@ -18,6 +18,13 @@ sealed class Ball extends Equatable {
   final Actor _owner;
   Id get ownerId => _owner.id;
 
+  ({double x, double y}) get anchor {
+    return (
+      x: _owner.position.x + (_owner.size.width * .8),
+      y: _owner.position.y + (_owner.size.height * .3),
+    );
+  }
+
   final Id id;
   double get speed;
   double get radius;

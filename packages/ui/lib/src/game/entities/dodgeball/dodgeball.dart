@@ -9,7 +9,7 @@ import 'package:ui/src/game/entities/player/player.dart';
 
 class Dodgeball extends SpriteComponent
     with HasGameReference<DodgeballGame>, EntityMixin, CollisionCallbacks {
-  Dodgeball(this.ball, {super.position});
+  Dodgeball(this.ball) : super(position: Vector2(ball.anchor.x, ball.anchor.y));
 
   final Ball ball;
 

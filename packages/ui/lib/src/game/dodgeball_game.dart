@@ -35,7 +35,7 @@ class DodgeballGame extends FlameGame
 
     final ball = Dodgeball(
       RegularBall(owner: player1.actor),
-      position: Vector2(gameWidth / 2 - 10, gameHeight / 2 - 30),
+      // position: Vector2(gameWidth / 2 - 10, gameHeight / 2 - 30),
     );
     await add(ball);
 

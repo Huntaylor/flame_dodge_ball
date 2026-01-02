@@ -31,6 +31,8 @@ class Player extends SpriteAnimationComponent
     final image = await game.images.load(actor.image);
     final jsonData = await game.assets.readJson(actor.animation);
 
+    _trackPosition();
+
     add(RectangleHitbox(size: Vector2(actor.size.width, actor.size.height)));
 
     animation = SpriteAnimation.fromAsepriteData(image, jsonData);
@@ -44,7 +46,13 @@ class Player extends SpriteAnimationComponent
     final displacement = direction.normalized() * actor.speed * dt;
 
     position.add(displacement);
+
+    _trackPosition();
     super.update(dt);
+  }
+
+  void _trackPosition() {
+    actor.position = (x: position.x, y: position.y);
   }
 
   void _addBehaviors() => addAll([PlayerControllerBehavior()]);
