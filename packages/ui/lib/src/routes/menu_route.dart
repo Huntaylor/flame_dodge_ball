@@ -5,21 +5,7 @@ class MenuRoute extends Route {
 
   @override
   Widget build(GameCoordinator coordinator, BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            ElevatedButton(
-              onPressed: () {
-                coordinator.navigate(SettingsRoute());
-              },
-              child: Text('Settings'),
-            ),
-            ElevatedButton(onPressed: () {}, child: Text('Game')),
-          ],
-        ),
-      ),
-    );
+    return const MenuScreen();
   }
 
   @override

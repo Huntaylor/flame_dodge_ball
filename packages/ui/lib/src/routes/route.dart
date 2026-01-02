@@ -5,6 +5,8 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:ui/src/game/dodgeball_game.dart';
+import 'package:ui/src/screens/menu/menu_screen.dart';
+import 'package:ui/src/screens/settings/settings_screen.dart';
 import 'package:zenrouter/zenrouter.dart';
 
 part 'dodgeball_game_route.dart';
