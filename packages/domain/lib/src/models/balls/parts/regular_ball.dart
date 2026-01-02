@@ -1,7 +1,7 @@
 part of '../ball.dart';
 
-class NormalBall extends Ball {
-  const NormalBall();
+class RegularBall extends Ball {
+  const RegularBall();
 
   @override
   double get speed => 100;

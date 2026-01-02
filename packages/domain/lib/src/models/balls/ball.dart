@@ -1,8 +1,14 @@
 import 'package:assets/assets.dart';
 
-part 'parts/normal_ball.dart';
+part 'parts/boss_ball.dart';
+part 'parts/enemy_ball.dart';
+part 'parts/friendly_ball.dart';
+part 'parts/giant_ball.dart';
+part 'parts/regular_ball.dart';
+part 'parts/speed_ball.dart';
+part 'parts/splitter_ball.dart';
 
-abstract class Ball {
+sealed class Ball {
   const Ball();
 
   double get speed;
