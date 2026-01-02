@@ -6,3 +6,7 @@ sealed class GameEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class _Init extends GameEvent {
+  const _Init();
+}

@@ -6,11 +6,15 @@ build_runner:
   (aliases): br
   build:
     (aliases): b
-    (command): dart run build_runner build --force-aot
+    (command): ${{ dart }} run build_runner build --force-aot
+    application: cd packages/application; ${{ build_runner.build }}
+    domain: cd packages/domain; ${{ build_runner.build }}
 
   watch:
     (aliases): w
-    (command): dart run build_runner watch --force-aot
+    (command): ${{ dart }} run build_runner watch --force-aot
+    application: cd packages/application; ${{ build_runner.watch }}
+    domain: cd packages/domain; ${{ build_runner.watch }}
 
 clean: flutter clean && flutter pub get
 
@@ -33,3 +37,16 @@ spider:
 
 web:
   build: flutter build web --release --wasm
+
+barrel:
+  (command):
+    - ${{ barrel.install }}
+    - ${{ barrel.build }}
+  install: |
+    # check if barreler exe can be executed
+    if ! barreler -v > /dev/null 2>&1; then
+      echo "Barreler not found, installing..."
+      ${{ dart }} pub global activate barreler
+    fi
+
+  build: barreler build --config barreler.yaml
