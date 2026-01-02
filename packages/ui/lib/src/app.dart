@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:ui/src/routes/route.dart';
 
 class MainApp extends StatefulWidget {
-  const MainApp({super.key, required this.getIt});
+  const MainApp({required this.getIt, super.key});
 
   final GetIt getIt;
 

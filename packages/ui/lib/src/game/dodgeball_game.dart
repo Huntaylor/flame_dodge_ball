@@ -6,10 +6,12 @@ import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 
 class DodgeballGame extends FlameGame {
-  DodgeballGame({required GameBloc gameBloc});
+  DodgeballGame({required this.gameBloc});
 
-  final double gameWidth = 1920.0;
-  final double gameHeight = 1027.0;
+  final double gameWidth = 1920;
+  final double gameHeight = 1027;
+
+  final GameBloc gameBloc;
 
   @override
   FutureOr<void> onLoad() async {
@@ -32,11 +34,10 @@ class DodgeballGame extends FlameGame {
   }
 
   void _cameraSetup() {
-    final viewfinder = Viewfinder();
-
-    viewfinder
+    final viewfinder = Viewfinder()
       ..anchor = Anchor.topLeft
       ..zoom = 10;
+
     camera = CameraComponent.withFixedResolution(
       width: gameWidth,
       height: gameHeight,

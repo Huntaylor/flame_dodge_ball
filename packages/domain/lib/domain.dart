@@ -4,4 +4,5 @@
 
 export 'src/enums/game_state.dart';
 export 'src/enums/music.dart';
-export 'src/repos/music_repo_interface.dart';
+export 'src/repos/music_repo.dart';
+export 'src/types/factory.dart';

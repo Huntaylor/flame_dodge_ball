@@ -1,5 +1,5 @@
 enum Music {
-  menu('menu');
+  menu('sample.mp3');
 
   const Music(this.path);
 

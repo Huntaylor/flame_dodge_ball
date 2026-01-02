@@ -5,7 +5,7 @@ class MenuRoute extends Route {
 
   @override
   Widget build(GameCoordinator coordinator, BuildContext context) {
-    return const MenuScreen();
+    return MenuScreen(musicBloc: coordinator.getIt.get);
   }
 
   @override

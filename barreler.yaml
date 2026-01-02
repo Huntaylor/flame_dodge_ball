@@ -25,6 +25,7 @@ dirs:
       - src/enums/**.dart
       - src/models/**.dart
       - src/repos/**.dart
+      - src/types/**.dart
 
   # -- ui --
   - path: packages/ui/lib

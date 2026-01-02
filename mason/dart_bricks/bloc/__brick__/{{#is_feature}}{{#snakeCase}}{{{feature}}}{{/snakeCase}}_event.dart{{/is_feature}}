@@ -3,35 +3,10 @@ part of '{{#snakeCase}}{{{feature}}}{{/snakeCase}}_bloc.dart';
 class {{#pascalCase}}{{{feature}}}{{/pascalCase}}Event extends Equatable {
   const {{#pascalCase}}{{{feature}}}{{/pascalCase}}Event();
 
-  static const create = _${{#pascalCase}}{{{feature}}}{{/pascalCase}}EventCreator();
-
   @override
   List<Object?> get props => _$props;
 }
 
 class _Init extends {{#pascalCase}}{{{feature}}}{{/pascalCase}}Event {
   const _Init();
-}
-
-class _Emit extends {{#pascalCase}}{{{feature}}}{{/pascalCase}}Event {
-  const _Emit(this.state);
-
-  final {{#pascalCase}}{{{feature}}}{{/pascalCase}}State state;
-
-  @override
-  List<Object?> get props => _$props;
-}
-
-class _NotifyOfError extends {{#pascalCase}}{{{feature}}}{{/pascalCase}}Event {
-  const _NotifyOfError(
-    this.message, {
-    // ignore: unused_element_parameter
-    this.fallback,
-  });
-
-  final String message;
-  final {{#pascalCase}}{{{feature}}}{{/pascalCase}}State? fallback;
-
-  @override
-  List<Object?> get props => _$props;
 }

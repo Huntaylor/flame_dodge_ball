@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'game_bloc.dart';
+part of 'music_bloc.dart';
 
 // **************************************************************************
 // BlocEnhancerGenerator
 // **************************************************************************
 
-class _GameBlocEvents {
-  const _GameBlocEvents(this._bloc);
+class _MusicBlocEvents {
+  const _MusicBlocEvents(this._bloc);
 
-  final GameBloc _bloc;
+  final MusicBloc _bloc;
 
-  void init() {
+  void play(Music music) {
     if (_bloc.isClosed) return;
-    _bloc.add(_Init());
+    _bloc.add(_Play(music));
   }
 }
 
-extension $GameBlocEventsX on GameBloc {
-  _GameBlocEvents get events => _GameBlocEvents(this);
+extension $MusicBlocEventsX on MusicBloc {
+  _MusicBlocEvents get events => _MusicBlocEvents(this);
 }
 
-extension $GameStateTypingX on GameState {
+extension $MusicStateTypingX on MusicState {
   bool get isLoading => this is _Loading;
 
   _Loading get asLoading => this as _Loading;
@@ -39,10 +39,18 @@ extension $GameStateTypingX on GameState {
 // EquatableGenerator
 // **************************************************************************
 
-extension _$GameEventEquatableAnnotations on GameEvent {
+extension _$MusicEventEquatableAnnotations on MusicEvent {
   List<Object?> get _$props => [];
 }
 
-extension _$GameStateEquatableAnnotations on GameState {
+extension _$PlayEquatableAnnotations on _Play {
+  List<Object?> get _$props => [music];
+}
+
+extension _$MusicStateEquatableAnnotations on MusicState {
   List<Object?> get _$props => [];
+}
+
+extension _$ReadyEquatableAnnotations on _Ready {
+  List<Object?> get _$props => [music];
 }
