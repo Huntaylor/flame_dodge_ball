@@ -89,7 +89,16 @@ $content''');
 
   final pubspec = fs.file('pubspec.yaml');
   final yaml = YamlEditor(pubspec.readAsStringSync())
-    ..update(['flutter', 'assets'], dirs.toList()..sort());
+    ..update(
+      ['flutter', 'assets'],
+      [
+        for (final dir in dirs.toList()..sort())
+          switch (dir.split('')) {
+            [..., '/'] => dir,
+            _ => '$dir/',
+          },
+      ],
+    );
 
   pubspec.writeAsStringSync(yaml.toString());
 
