@@ -32,3 +32,5 @@ flutter:
 
 dependency_overrides:
   analyzer: ^8.2.0
+
+scripts: derry.yaml

@@ -1,6 +1,6 @@
 (executables):
-  # dart: fvm dart
-  # flutter: fvm flutter
+  dart: fvm dart
+  flutter: fvm flutter
 
 build_runner:
   (aliases): br
