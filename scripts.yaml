@@ -1,0 +1,35 @@
+(executables):
+  dart: fvm dart
+  flutter: fvm flutter
+
+build_runner:
+  (aliases): br
+  build:
+    (aliases): b
+    (command): dart run build_runner build --force-aot
+
+  watch:
+    (aliases): w
+    (command): dart run build_runner watch --force-aot
+
+clean: flutter clean && flutter pub get
+
+doc: flutter doctor -v
+
+full:
+  clean: flutter clean && flutter pub get && cd ios && pod deintegrate && pod install && cd ../
+
+init: flutterfire configure
+
+pod:
+  clean: cd ios; pod deintegrate; rm -rf Podfile.lock; cd ..; flutter pub get; cd ios; pod install --repo-update
+
+fpg: flutter pub get
+
+spider:
+  (aliases): s
+  init: spider create --add-in-pubspec
+  build: spider build
+
+web:
+  build: flutter build web --release --wasm
