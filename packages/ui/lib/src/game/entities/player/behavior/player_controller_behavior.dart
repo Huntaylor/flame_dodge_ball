@@ -24,12 +24,8 @@ class PlayerControllerBehavior extends Behavior<Player>
   }
 
   bool _throw(KeyEvent event) {
-    final ball = _nextBall();
-
     if (event case KeyDownEvent(logicalKey: LogicalKeyboardKey.space)) {
-      parent.actor.throwBall(ball);
-
-      return true;
+      return parent.actor.throwBall(_nextBall());
     }
 
     return false;

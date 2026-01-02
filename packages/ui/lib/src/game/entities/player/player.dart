@@ -19,7 +19,7 @@ class Player extends SpriteAnimationComponent
   }) {
     actor.setup(
       onBallThrown: (ball) async {
-        await game.world.add(Dodgeball(ball));
+        Dodgeball(ball).addTo(game.world);
       },
     );
   }

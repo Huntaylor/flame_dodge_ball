@@ -8,9 +8,18 @@ import 'package:flutter/material.dart';
 import 'package:ui/src/game/dodgeball_game.dart';
 import 'package:ui/src/game/entities/player/player.dart';
 
+part 'parts/splitter_ball.dart';
+
 class Dodgeball extends SpriteComponent
     with HasGameReference<DodgeballGame>, EntityMixin, CollisionCallbacks {
   Dodgeball(this.ball)
+    : direction = Vector2(1, 0),
+      super(
+        position: Vector2(ball.anchor.x, ball.anchor.y),
+        size: Vector2.all(ball.radius * 2),
+      );
+
+  Dodgeball._(this.ball, {required this.direction})
     : super(
         position: Vector2(ball.anchor.x, ball.anchor.y),
         size: Vector2.all(ball.radius * 2),
@@ -18,7 +27,7 @@ class Dodgeball extends SpriteComponent
 
   final Ball ball;
 
-  final Vector2 direction = Vector2.zero();
+  final Vector2 direction;
 
   @override
   FutureOr<void> onLoad() async {
@@ -63,5 +72,19 @@ class Dodgeball extends SpriteComponent
     }
 
     super.onCollision(intersectionPoints, other);
+  }
+
+  void addTo(World world) {
+    switch (ball) {
+      case SplitterBall():
+        world.add(SplitterDodgeball(this));
+      case BossBall():
+      case EnemyBall():
+      case FriendlyBall():
+      case GiantBall():
+      case RegularBall():
+      case SpeedBall():
+        world.add(this);
+    }
   }
 }

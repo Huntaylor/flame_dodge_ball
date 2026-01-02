@@ -1,7 +1,9 @@
 part of '../ball.dart';
 
 class SplitterBall extends Ball {
-  const SplitterBall({required super.owner});
+  SplitterBall({required super.owner});
+  SplitterBall._anchor({required super.owner, required super.anchor})
+    : super._anchor();
 
   @override
   double get speed => 280;
@@ -20,4 +22,8 @@ class SplitterBall extends Ball {
 
   @override
   String get image => BallImages.splitterBall;
+
+  SplitterBall split(({double x, double y}) anchor) {
+    return SplitterBall._anchor(owner: _owner, anchor: anchor);
+  }
 }

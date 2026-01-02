@@ -13,12 +13,22 @@ part 'parts/speed_ball.dart';
 part 'parts/splitter_ball.dart';
 
 sealed class Ball extends Equatable {
-  const Ball({required Actor owner}) : id = const Id(), _owner = owner;
+  Ball({required Actor owner}) : id = Id(), _owner = owner, _anchor = null;
+
+  Ball._anchor({required Actor owner, required ({double x, double y}) anchor})
+    : id = Id(),
+      _owner = owner,
+      _anchor = anchor;
 
   final Actor _owner;
   Id get ownerId => _owner.id;
 
+  final ({double x, double y})? _anchor;
   ({double x, double y}) get anchor {
+    if (_anchor case final anchor?) {
+      return anchor;
+    }
+
     return (
       x: _owner.position.x + (_owner.size.width * .8),
       y: _owner.position.y + (_owner.size.height * .3),

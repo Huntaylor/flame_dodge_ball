@@ -4,7 +4,7 @@ import 'package:domain/src/models/balls/ball.dart';
 import 'package:domain/src/models/id.dart';
 
 abstract base class Actor {
-  Actor({required double health}) : _health = health, id = const Id();
+  Actor({required double health}) : _health = health, id = Id();
 
   void setup({required Future<void> Function(Ball) onBallThrown}) {
     _hasSetup = true;
@@ -45,10 +45,6 @@ abstract base class Actor {
 
   final List<Ball> _balls = [];
 
-  void addBall(Ball ball) {
-    _balls.add(ball);
-  }
-
   void removeBall(Ball ball) {
     _balls.remove(ball);
   }
@@ -60,16 +56,17 @@ abstract base class Actor {
     };
   }
 
-  Future<void> throwBall(Ball ball) async {
+  bool throwBall(Ball ball) {
     if (!_hasSetup) {
       throw Exception('Actor is not setup, cannot throw ball');
     }
 
     if (!canThrow(ball)) {
-      return;
+      return false;
     }
 
-    addBall(ball);
-    await _onBallThrown(ball);
+    _balls.add(ball);
+    _onBallThrown(ball);
+    return true;
   }
 }

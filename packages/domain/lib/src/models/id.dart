@@ -1,10 +1,13 @@
+import 'dart:math';
+
 class Id {
-  const Id({this.debugId});
+  Id({this.debugId}) : _value = Random().nextInt(1000000);
 
   final String? debugId;
+  final int _value;
 
   @override
   String toString() {
-    return debugId ?? '$hashCode';
+    return debugId ?? '$_value';
   }
 }

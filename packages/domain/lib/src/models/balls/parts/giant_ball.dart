@@ -1,7 +1,7 @@
 part of '../ball.dart';
 
 class GiantBall extends Ball {
-  const GiantBall({required super.owner});
+  GiantBall({required super.owner});
 
   @override
   double get speed => 60;
