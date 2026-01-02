@@ -1,14 +1,15 @@
-part of 'game_route.dart';
+part of 'route.dart';
 
-class DodgeballGameRoute extends GameRoute {
+class DodgeballGameRoute extends Route {
   DodgeballGameRoute();
 
   @override
   Widget build(GameCoordinator coordinator, BuildContext context) {
     return Scaffold(
       body: GameWidget<DodgeballGame>.controlled(
-        gameFactory: () =>
-            DodgeballGame(gameBloc: coordinator.getIt.get<GameBloc>()),
+        gameFactory: () {
+          return DodgeballGame(gameBloc: coordinator.getIt.get<GameBloc>());
+        },
       ),
     );
   }

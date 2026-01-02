@@ -1,7 +1,7 @@
 part of 'route.dart';
 
-class MenuRoute extends Route {
-  MenuRoute();
+class SettingsRoute extends Route {
+  SettingsRoute();
 
   @override
   Widget build(GameCoordinator coordinator, BuildContext context) {
@@ -11,11 +11,10 @@ class MenuRoute extends Route {
           children: <Widget>[
             ElevatedButton(
               onPressed: () {
-                coordinator.navigate(SettingsRoute());
+                coordinator.navigate(MenuRoute());
               },
-              child: Text('Settings'),
+              child: const Text('Menu'),
             ),
-            ElevatedButton(onPressed: () {}, child: Text('Game')),
           ],
         ),
       ),
@@ -24,6 +23,6 @@ class MenuRoute extends Route {
 
   @override
   Uri toUri() {
-    return Uri.parse('/menu');
+    return Uri.parse('/settings');
   }
 }

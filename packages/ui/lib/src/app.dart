@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:ui/src/routes/game_route.dart';
+import 'package:ui/src/routes/route.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key, required this.getIt});

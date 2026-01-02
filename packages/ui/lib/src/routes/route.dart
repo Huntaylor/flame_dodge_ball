@@ -7,13 +7,14 @@ import 'package:get_it/get_it.dart';
 import 'package:ui/src/game/dodgeball_game.dart';
 import 'package:zenrouter/zenrouter.dart';
 
-part 'menu_route.dart';
 part 'dodgeball_game_route.dart';
+part 'menu_route.dart';
+part 'settings_route.dart';
 part 'unknown_route.dart';
 
-abstract class GameRoute extends RouteTarget with RouteUnique {}
+abstract class Route extends RouteTarget with RouteUnique {}
 
-class GameCoordinator extends Coordinator<GameRoute> {
+class GameCoordinator extends Coordinator<Route> {
   GameCoordinator._(this.getIt);
   static void init(GetIt getIt) {
     if (_instance != null) {
@@ -30,10 +31,11 @@ class GameCoordinator extends Coordinator<GameRoute> {
   final GetIt getIt;
 
   @override
-  FutureOr<GameRoute> parseRouteFromUri(Uri uri) {
+  FutureOr<Route> parseRouteFromUri(Uri uri) {
     return switch (uri.pathSegments) {
       [] || ['/'] => MenuRoute(),
-      ['dodgeball_game'] => DodgeballGameRoute(),
+      ['settings'] => SettingsRoute(),
+      ['game'] => DodgeballGameRoute(),
       _ => UnknownRoute(),
     };
   }

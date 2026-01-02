@@ -1,6 +1,6 @@
-part of 'game_route.dart';
+part of 'route.dart';
 
-class UnknownRoute extends GameRoute {
+class UnknownRoute extends Route {
   @override
   Widget build(GameCoordinator coordinator, BuildContext context) {
     return const Scaffold(body: Center(child: Text('Uh-oh!')));
