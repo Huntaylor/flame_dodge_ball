@@ -17,14 +17,21 @@ class PlayerControllerBehavior extends Behavior<Player>
           ..x = 0
           ..y = 0;
       } else {
-        if (event.logicalKey == LogicalKeyboardKey.keyA) {
-          parent.direction.x = -1;
-        } else if (event.logicalKey == LogicalKeyboardKey.keyW) {
-          parent.direction.y = -1;
-        } else if (event.logicalKey == LogicalKeyboardKey.keyS) {
-          parent.direction.y = 1;
-        } else if (event.logicalKey == LogicalKeyboardKey.keyD) {
-          parent.direction.x = 1;
+        if (event.logicalKey == LogicalKeyboardKey.keyW ||
+            event.logicalKey == LogicalKeyboardKey.keyS) {
+          if (event.logicalKey == LogicalKeyboardKey.keyW) {
+            parent.direction.y = -1;
+          } else if (event.logicalKey == LogicalKeyboardKey.keyS) {
+            parent.direction.y = 1;
+          }
+        }
+        if (event.logicalKey == LogicalKeyboardKey.keyA ||
+            event.logicalKey == LogicalKeyboardKey.keyD) {
+          if (event.logicalKey == LogicalKeyboardKey.keyA) {
+            parent.direction.x = -1;
+          } else if (event.logicalKey == LogicalKeyboardKey.keyD) {
+            parent.direction.x = 1;
+          }
         }
       }
     }
