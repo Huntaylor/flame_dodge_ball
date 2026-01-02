@@ -26,7 +26,7 @@ class MenuScreen extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  GameCoordinator.instance.navigate(DodgeballGameRoute());
+                  GameCoordinator.instance.navigate(GameRoute());
                 },
                 child: const Text('Game'),
               ),

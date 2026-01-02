@@ -9,7 +9,7 @@ import 'package:ui/src/screens/menu/menu_screen.dart';
 import 'package:ui/src/screens/settings/settings_screen.dart';
 import 'package:zenrouter/zenrouter.dart';
 
-part 'dodgeball_game_route.dart';
+part 'game_route.dart';
 part 'menu_route.dart';
 part 'settings_route.dart';
 part 'unknown_route.dart';
@@ -17,7 +17,7 @@ part 'unknown_route.dart';
 abstract class Route extends RouteTarget with RouteUnique {}
 
 class GameCoordinator extends Coordinator<Route> {
-  GameCoordinator._(this.getIt);
+  GameCoordinator._(this._getIt);
   static void init(GetIt getIt) {
     if (_instance != null) {
       throw Exception('GameCoordinator already initialized');
@@ -30,14 +30,14 @@ class GameCoordinator extends Coordinator<Route> {
   static GameCoordinator get instance =>
       _instance ?? (throw Exception('GameCoordinator not initialized'));
 
-  final GetIt getIt;
+  final GetIt _getIt;
 
   @override
   FutureOr<Route> parseRouteFromUri(Uri uri) {
     return switch (uri.pathSegments) {
       [] || ['/'] => MenuRoute(),
       ['settings'] => SettingsRoute(),
-      ['game'] => DodgeballGameRoute(),
+      ['game'] => GameRoute(),
       _ => UnknownRoute(),
     };
   }

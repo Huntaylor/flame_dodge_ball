@@ -12,6 +12,7 @@ export 'src/game/entities/player/player.dart';
 export 'src/game/level/level.dart';
 export 'src/game/overlays/pause_overlay.dart';
 export 'src/routes/route.dart';
+export 'src/screens/game/game_screen.dart';
 export 'src/screens/menu/menu_screen.dart';
 export 'src/screens/settings/settings_screen.dart';
 export 'src/setup.dart' show setup;
