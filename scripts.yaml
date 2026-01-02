@@ -3,6 +3,7 @@
   flutter: fvm flutter
 
 setup:
+  hooks: dart run hooksman
   mason:
     (command):
       - |

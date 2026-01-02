@@ -30,6 +30,8 @@ setup-mason:
     dart run mason_cli:mason get
     dart run mason_cli:mason list
 
+setup-hooks: dart run hooksman
+
 barrel:
   - |
     # check if barreler exe can be executed

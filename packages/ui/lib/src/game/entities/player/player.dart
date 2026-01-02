@@ -7,6 +7,7 @@ class Player extends SpriteAnimationComponent {
 
   @override
   FutureOr<void> onLoad() {
+    // hi
     return super.onLoad();
   }
 }
