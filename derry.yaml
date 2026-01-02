@@ -18,3 +18,34 @@ spider init: spider create --add-in-pubspec
 sbuild: spider build
 
 webbuild: flutter build web --release --wasm
+
+setup-mason:
+  - |
+    cd mason/mason_templates
+    dart run brick_oven cook all --output ../dart_bricks --sync
+  - |
+    cd mason/dart_bricks
+    rm -rf .mason
+
+    dart run mason_cli:mason get
+    dart run mason_cli:mason list
+
+barrel:
+  - |
+    # check if barreler exe can be executed
+    if command -v barreler >/dev/null 2>&1; then
+      echo "Barreler found"
+      exit 0
+    fi
+
+    dart pub global activate barreler
+  - barreler build --config barreler.yaml
+
+create-bloc:
+  - |
+    BLOCS=packages/application/lib/src/blocs
+    ABSOLUTE="$(realpath "$BLOCS")"
+    echo "Generating Bloc in $BLOCS"
+    cd mason/dart_bricks
+    dart run mason_cli:mason make bloc -o "$ABSOLUTE"
+  - $barrel

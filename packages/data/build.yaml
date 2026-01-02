@@ -1,0 +1,25 @@
+targets:
+  $default:
+    builders:
+      get_it_injector_gen:
+        enabled: true
+        options:
+          auto_register: true
+          register_as_implementation: true
+          ignore_for_file:
+            - cs_forbidden_imports
+            - directives_ordering
+            - unnecessary_lambdas
+            - prefer_const_constructors
+            - require_trailing_commas
+            - implementation_imports
+            - lines_longer_than_80_chars
+            - duplicate_ignore
+          groups:
+            data_source:
+              - DataSource
+            repo:
+              - Repo
+          lazy_singletons:
+            - Cache
+            - DataSource

@@ -2,6 +2,19 @@
   dart: fvm dart
   flutter: fvm flutter
 
+setup:
+  mason:
+    (command):
+      - |
+        cd mason/mason_templates
+        dart run brick_oven cook all --output ../dart_bricks --sync
+      - |
+        cd mason/dart_bricks
+        rm -rf .mason
+
+        dart run mason_cli:mason get
+        dart run mason_cli:mason list
+
 build_runner:
   (aliases): br
   build:
@@ -44,9 +57,21 @@ barrel:
     - ${{ barrel.build }}
   install: |
     # check if barreler exe can be executed
-    if ! barreler -v > /dev/null 2>&1; then
-      echo "Barreler not found, installing..."
-      ${{ dart }} pub global activate barreler
+    if command -v barreler >/dev/null 2>&1; then
+      echo "Barreler exe found"
+      exit 0
     fi
 
+    ${{ dart }} pub global activate barreler
+
   build: barreler build --config barreler.yaml
+
+create:
+  bloc:
+    - |
+      BLOCS=packages/application/lib/src/blocs
+      ABSOLUTE="$(realpath "$BLOCS")"
+      echo "Generating Bloc in $BLOCS"
+      cd mason/dart_bricks
+      dart run mason_cli:mason make bloc -o "$ABSOLUTE"
+    - ${{ barrel }}

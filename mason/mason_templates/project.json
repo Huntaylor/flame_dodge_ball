@@ -1,0 +1,16 @@
+{
+    "name": "mason-templates",
+    "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "{projectRoot}/lib",
+    "projectType": "library",
+    "targets": {
+        "install": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "sip pub get --recursive",
+                "inputs": ["{projectRoot}/pubspec.lock"],
+                "cwd": "{projectRoot}"
+            }
+        }
+    }
+}

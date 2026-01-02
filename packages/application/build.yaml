@@ -28,8 +28,8 @@ targets:
           avoid_events:
             - Emit
             - NotifyOfError
-          create_state_factory: true
-          create_event_factory: true
+          create_state_factory: false
+          create_event_factory: false
 
       equatable_gen:
         enabled: true

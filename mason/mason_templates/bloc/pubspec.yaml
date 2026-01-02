@@ -1,0 +1,8 @@
+name: _
+
+environment:
+    sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+    bloc: ^9.0.0
+    equatable: ^2.0.7

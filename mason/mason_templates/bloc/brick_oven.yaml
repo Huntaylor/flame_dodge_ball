@@ -1,0 +1,37 @@
+source: oven
+brick_config:
+  path: ../../dart_bricks/bloc/brick.yaml
+  ignore_vars:
+    - type
+    - is_feature
+    - is_plural
+    - is_single
+
+files:
+  feature_bloc.dart:
+    name:
+      rename_with: feature
+      suffix: _bloc
+      format: snakeCase
+    include:
+      if: is_feature
+    vars:
+      _FEATURE_: feature
+  feature_event.dart:
+    name:
+      rename_with: feature
+      suffix: _event
+      format: snakeCase
+    include:
+      if: is_feature
+    vars:
+      _FEATURE_: feature
+  feature_state.dart:
+    name:
+      rename_with: feature
+      suffix: _state
+      format: snakeCase
+    include:
+      if: is_feature
+    vars:
+      _FEATURE_: feature

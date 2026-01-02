@@ -24,9 +24,18 @@ dirs:
     include:
       - src/enums/**.dart
       - src/models/**.dart
+      - src/repos/**.dart
 
   # -- ui --
   - path: packages/ui/lib
     name: ui
     include:
       - "**/*.dart"
+    exclude:
+      - "**/*_route.dart"
+
+  # -- data --
+  - path: packages/data/lib
+    name: data
+    include:
+      - src/repos/**.dart

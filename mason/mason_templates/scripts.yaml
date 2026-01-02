@@ -1,0 +1,3 @@
+generate:
+    (command): dart run brick_oven cook all --output ../dart_bricks --sync
+    watch: '{$generate} --watch'

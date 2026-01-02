@@ -1,0 +1,32 @@
+analyzer:
+    errors:
+        unused_import: ignore
+        uri_does_not_exist: ignore
+        unused_element: ignore
+        undefined_method: ignore
+        creation_with_non_type: ignore
+        extends_non_class: ignore
+        undefined_class: ignore
+        override_on_non_overriding_member: ignore
+        mixin_with_non_class_superclass: ignore
+        mixin_of_non_class: ignore
+        undefined_super_member: ignore
+        undefined_identifier: ignore
+        part_of_different_library: ignore
+        non_type_as_type_argument: ignore
+        uri_has_not_been_generated: ignore
+        unchecked_use_of_nullable_value: ignore
+        undefined_annotation: ignore
+        const_initialized_with_non_constant_value: ignore
+        unused_field: ignore
+        super_formal_parameter_without_associated_named: ignore
+        private_optional_parameter: ignore
+        type_argument_not_matching_bounds: ignore
+        could_not_infer: ignore
+        implements_non_class: ignore
+        invalid_field_name: ignore
+        undefined_named_parameter: ignore
+        undefined_function: ignore
+        invalid_use_of_visible_for_testing_member: ignore
+        unused_element_parameter: ignore
+        extra_positional_arguments: ignore

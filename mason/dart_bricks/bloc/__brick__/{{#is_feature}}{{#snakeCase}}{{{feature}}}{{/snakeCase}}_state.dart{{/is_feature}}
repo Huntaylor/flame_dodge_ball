@@ -1,0 +1,34 @@
+part of '{{#snakeCase}}{{{feature}}}{{/snakeCase}}_bloc.dart';
+
+class {{#pascalCase}}{{{feature}}}{{/pascalCase}}State extends Equatable {
+  const {{#pascalCase}}{{{feature}}}{{/pascalCase}}State();
+
+  static const create = _${{#pascalCase}}{{{feature}}}{{/pascalCase}}StateCreator();
+
+  @override
+  List<Object?> get props => _$props;
+}
+
+class _Error extends {{#pascalCase}}{{{feature}}}{{/pascalCase}}State {
+  const _Error(this.message);
+
+  final String message;
+
+  @override
+  List<Object?> get props => _$props;
+}
+
+class _NotifyError extends _Error {
+  const _NotifyError(super.message);
+}
+
+class _Loading extends {{#pascalCase}}{{{feature}}}{{/pascalCase}}State {
+  const _Loading();
+}
+
+class _Ready extends {{#pascalCase}}{{{feature}}}{{/pascalCase}}State {
+  const _Ready();
+
+  @override
+  List<Object?> get props => _$props;
+}

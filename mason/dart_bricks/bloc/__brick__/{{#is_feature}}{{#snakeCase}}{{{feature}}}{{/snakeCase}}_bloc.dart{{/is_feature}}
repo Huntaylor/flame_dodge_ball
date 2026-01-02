@@ -1,0 +1,23 @@
+import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
+
+part '{{#snakeCase}}{{{feature}}}{{/snakeCase}}_bloc.g.dart';
+part '{{#snakeCase}}{{{feature}}}{{/snakeCase}}_event.dart';
+part '{{#snakeCase}}{{{feature}}}{{/snakeCase}}_state.dart';
+
+class {{#pascalCase}}{{{feature}}}{{/pascalCase}}Bloc
+    extends Bloc<{{#pascalCase}}{{{feature}}}{{/pascalCase}}Event, {{#pascalCase}}{{{feature}}}{{/pascalCase}}State> {
+  {{#pascalCase}}{{{feature}}}{{/pascalCase}}Bloc() : super(const _Loading()) {
+    on<_Init>(_init);
+    on<_Emit>((event, emit) => emit(event.state));
+    on<_NotifyOfError>((event, emit) {
+      final fallback = event.fallback ?? state;
+      emit(_NotifyError(event.message));
+      emit(fallback);
+    });
+  }
+
+  Future<void> _init(_Init event, Emitter<{{#pascalCase}}{{{feature}}}{{/pascalCase}}State> emit) async {
+    emit(const _Ready());
+  }
+}

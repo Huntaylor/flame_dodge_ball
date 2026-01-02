@@ -1,0 +1,9 @@
+name: bloc
+description: Creates the base structure for a bloc used in couchsurfing
+version: 0.0.1
+
+vars:
+  feature:
+    type: string
+    description: The name of the bloc, event, and state
+    prompt: What is the name of the bloc?
