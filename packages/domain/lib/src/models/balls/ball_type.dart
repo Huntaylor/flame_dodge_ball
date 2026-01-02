@@ -8,11 +8,11 @@ part 'parts/regular_ball.dart';
 part 'parts/speed_ball.dart';
 part 'parts/splitter_ball.dart';
 
-sealed class Ball {
-  const Ball();
+sealed class BallType {
+  const BallType();
 
   double get speed;
   double get radius;
-  double get damage;
-  String get image;
+  double get damage => 0;
+  String get image => '';
 }

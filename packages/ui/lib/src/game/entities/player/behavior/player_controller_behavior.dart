@@ -40,9 +40,8 @@ class PlayerControllerBehavior extends Behavior<Player>
   }
 
   @override
-  bool collidingWith(PositionComponent other) {
-    // print(other.hashCode);
-
-    return false;
+  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
+    // print('PlayerControllerBehavior onCollision');
+    super.onCollision(intersectionPoints, other);
   }
 }

@@ -1,14 +1,17 @@
 import 'dart:async';
 
 import 'package:application/application.dart';
+import 'package:domain/domain.dart';
 import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:ui/src/game/entities/dodgeball/dodgeball.dart';
 import 'package:ui/src/game/entities/player/player.dart';
 
-class DodgeballGame extends FlameGame with HasKeyboardHandlerComponents {
+class DodgeballGame extends FlameGame
+    with HasKeyboardHandlerComponents, HasCollisionDetection {
   DodgeballGame({required this.gameBloc});
 
   final GameBloc gameBloc;
@@ -29,6 +32,12 @@ class DodgeballGame extends FlameGame with HasKeyboardHandlerComponents {
     _cameraSetup();
     player1 = Player(position: Vector2(gameWidth / 2, gameHeight / 2));
     await add(player1);
+
+    final ball = Dodgeball(
+      type: const RegularBall(),
+      position: Vector2(gameWidth / 2 - 10, gameHeight / 2 - 10),
+    );
+    await add(ball);
 
     await _setupLevel();
 

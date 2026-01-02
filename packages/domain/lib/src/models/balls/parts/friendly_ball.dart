@@ -1,6 +1,6 @@
-part of '../ball.dart';
+part of '../ball_type.dart';
 
-class FriendlyBall extends Ball {
+class FriendlyBall extends BallType {
   const FriendlyBall();
 
   @override
