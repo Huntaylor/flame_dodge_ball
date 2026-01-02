@@ -3,7 +3,7 @@
 import 'package:domain/src/models/balls/ball.dart';
 import 'package:domain/src/models/id.dart';
 
-abstract class Actor {
+abstract base class Actor {
   Actor({required double health}) : _health = health, id = const Id();
 
   void setup({required Future<void> Function(Ball) onBallThrown}) {

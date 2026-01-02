@@ -4,7 +4,7 @@ class FriendlyBall extends Ball {
   const FriendlyBall({required super.owner});
 
   @override
-  double get speed => 100;
+  double get speed => 300;
 
   @override
   double get radius => 10;

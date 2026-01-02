@@ -7,7 +7,7 @@ class GiantBall extends Ball {
   double get speed => 60;
 
   @override
-  double get radius => 40;
+  double get radius => 20;
 
   @override
   double get damage => 30;

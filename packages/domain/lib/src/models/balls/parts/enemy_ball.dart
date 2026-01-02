@@ -4,10 +4,10 @@ class EnemyBall extends Ball {
   const EnemyBall({required super.owner});
 
   @override
-  double get speed => 120;
+  double get speed => 220;
 
   @override
-  double get radius => 12;
+  double get radius => 10;
 
   @override
   double get damage => 15;

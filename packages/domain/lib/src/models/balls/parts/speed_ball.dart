@@ -4,7 +4,7 @@ class SpeedBall extends Ball {
   const SpeedBall({required super.owner});
 
   @override
-  double get speed => 200;
+  double get speed => 380;
 
   @override
   double get radius => 8;

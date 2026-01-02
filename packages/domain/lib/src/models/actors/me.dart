@@ -1,7 +1,7 @@
 import 'package:assets/assets.dart';
 import 'package:domain/src/models/actors/actor.dart';
 
-class Me extends Actor {
+final class Me extends Actor {
   Me() : super(health: 100);
 
   @override

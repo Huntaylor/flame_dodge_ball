@@ -20,7 +20,7 @@ class PlayerControllerBehavior extends Behavior<Player>
   }
 
   Ball _nextBall() {
-    return RegularBall(owner: parent.actor);
+    return SplitterBall(owner: parent.actor);
   }
 
   bool _throw(KeyEvent event) {
