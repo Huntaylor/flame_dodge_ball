@@ -8,4 +8,5 @@ class PlayerAnimations {
   static const String player1Idle = 'animations/players/player_1_idle.json';
   static const String player1Running = 'animations/players/player_1_running.json';
   static const String player1Throwing = 'animations/players/player_1_throwing.json';
+  static const String player1ThrowingCombined = 'animations/players/player_1_throwing_combined.json';
 }

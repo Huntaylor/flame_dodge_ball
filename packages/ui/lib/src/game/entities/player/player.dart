@@ -7,16 +7,11 @@ import 'package:flame_behaviors/flame_behaviors.dart';
 import 'package:ui/src/game/dodgeball_game.dart';
 import 'package:ui/src/game/entities/dodgeball/dodgeball.dart';
 import 'package:ui/src/game/entities/player/behavior/player_controller_behavior.dart';
+import 'package:ui/src/game/entities/player/behavior/player_state_behavior.dart';
 
-class Player extends SpriteAnimationComponent
+class Player extends SpriteAnimationGroupComponent<PlayerAnimationState>
     with HasGameReference<DodgeballGame>, EntityMixin, CollisionCallbacks {
-  Player(
-    this.actor, {
-    super.animation,
-    super.position,
-    super.priority,
-    super.autoResize,
-  }) {
+  Player(this.actor, {super.position, super.priority, super.autoResize}) {
     actor.setup(
       onBallThrown: (ball) async {
         Dodgeball(ball).addTo(game.world);
@@ -31,8 +26,13 @@ class Player extends SpriteAnimationComponent
   double horizontalMovement = 0;
   double verticalMovement = 0;
 
+  late PlayerAnimationState playerAnimationState;
+
   late final PlayerControllerBehavior controllerBehavior =
       findBehavior<PlayerControllerBehavior>();
+
+  late final PlayerStateBehavior stateBehavior =
+      findBehavior<PlayerStateBehavior>();
 
   @override
   FutureOr<void> onLoad() async {
@@ -43,7 +43,7 @@ class Player extends SpriteAnimationComponent
 
     add(RectangleHitbox(size: Vector2(actor.size.width, actor.size.height)));
 
-    animation = SpriteAnimation.fromAsepriteData(image, jsonData);
+    // animation = SpriteAnimation.fromAsepriteData(image, jsonData);
     _addBehaviors();
 
     return super.onLoad();
@@ -66,5 +66,6 @@ class Player extends SpriteAnimationComponent
     actor.position = (x: position.x, y: position.y);
   }
 
-  void _addBehaviors() => addAll([PlayerControllerBehavior()]);
+  void _addBehaviors() =>
+      addAll([PlayerControllerBehavior(), PlayerStateBehavior()]);
 }

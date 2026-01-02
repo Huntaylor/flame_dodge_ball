@@ -9,4 +9,5 @@ class PlayerImages {
   static const String player1Idle = 'players/player_1_idle.png';
   static const String player1Running = 'players/player_1_running.png';
   static const String player1Throwing = 'players/player_1_throwing.png';
+  static const String player1ThrowingCombined = 'players/player_1_throwing_combined.png';
 }

@@ -17,6 +17,7 @@ class Dodgeball extends SpriteComponent
       super(
         position: Vector2(ball.anchor.x, ball.anchor.y),
         size: Vector2.all(ball.radius * 2),
+        priority: 3,
       );
 
   Dodgeball._(this.ball, {required this.direction})
