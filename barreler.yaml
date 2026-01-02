@@ -2,6 +2,7 @@ exclude:
   - "**.g.dart"
   - "**/gen.dart"
   - "**/__*.dart"
+  - "**/parts/**.dart"
 
 defaults:
   comments: |
@@ -45,3 +46,9 @@ dirs:
       - src/repos/**.dart
       - export: src/setup.dart
         show: setup
+
+  # -- assets --
+  - path: packages/assets/lib
+    name: assets
+    include:
+      - assets/resources.dart

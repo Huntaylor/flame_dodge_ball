@@ -44,15 +44,7 @@ init: flutterfire configure
 pod:
   clean: cd ios; pod deintegrate; rm -rf Podfile.lock; cd ..; flutter pub get; cd ios; pod install --repo-update
 
-fpg: flutter pub get
-
-spider:
-  (aliases): s
-  init: spider create --add-in-pubspec
-  build: spider build
-
-web:
-  build: flutter build web --release --wasm
+assets: cd scripts; dart run _scripts:clean_assets
 
 barrel:
   (command):

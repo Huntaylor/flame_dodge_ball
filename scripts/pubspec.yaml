@@ -1,0 +1,11 @@
+name: _scripts
+publish_to: none
+
+environment:
+  sdk: ^3.10.4
+
+dependencies:
+  file: ^7.0.1
+
+executables:
+  clean_assets: clean_assets

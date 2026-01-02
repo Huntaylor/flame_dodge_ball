@@ -1,5 +1,7 @@
+import 'package:assets/assets.dart';
+
 enum Music {
-  menu('audio/sample.mp3');
+  menu(Audio.sample);
 
   const Music(this.path);
 
