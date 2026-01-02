@@ -5,6 +5,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
 import 'package:ui/src/game/dodgeball_game.dart';
+import 'package:ui/src/game/entities/dodgeball/dodgeball.dart';
 import 'package:ui/src/game/entities/player/behavior/player_controller_behavior.dart';
 
 class Player extends SpriteAnimationComponent
@@ -15,7 +16,13 @@ class Player extends SpriteAnimationComponent
     super.position,
     super.priority,
     super.autoResize,
-  });
+  }) {
+    actor.setup(
+      onBallThrown: (ball) async {
+        await game.world.add(Dodgeball(ball));
+      },
+    );
+  }
 
   final Actor actor;
 

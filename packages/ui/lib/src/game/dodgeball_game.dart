@@ -31,12 +31,9 @@ class DodgeballGame extends FlameGame
 
     _cameraSetup();
     player1 = Player(Me(), position: Vector2(gameWidth / 2, gameHeight / 2));
-    await add(player1);
+    await world.add(player1);
 
-    final ball = Dodgeball(
-      RegularBall(owner: player1.actor),
-      // position: Vector2(gameWidth / 2 - 10, gameHeight / 2 - 30),
-    );
+    final ball = Dodgeball(RegularBall(owner: player1.actor));
     await add(ball);
 
     await _setupLevel();
@@ -47,9 +44,7 @@ class DodgeballGame extends FlameGame
   }
 
   void _cameraSetup() {
-    final viewfinder = Viewfinder()
-      ..anchor = Anchor.topLeft
-      ..zoom = 10;
+    final viewfinder = Viewfinder()..anchor = Anchor.topLeft;
 
     camera = CameraComponent.withFixedResolution(
       width: gameWidth,

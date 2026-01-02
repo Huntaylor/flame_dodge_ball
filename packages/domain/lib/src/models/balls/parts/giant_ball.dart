@@ -13,5 +13,11 @@ class GiantBall extends Ball {
   double get damage => 30;
 
   @override
+  double get cooldown => 1;
+
+  @override
+  int get max => 1;
+
+  @override
   String get image => BallImages.giantBall;
 }

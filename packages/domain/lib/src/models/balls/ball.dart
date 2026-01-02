@@ -30,6 +30,17 @@ sealed class Ball extends Equatable {
   double get radius;
   double get damage;
   String get image;
+  double get cooldown;
+
+  /// The maximum number of balls that can be thrown by the actor.
+  ///
+  /// When the actor has reached the maximum number of balls, the actor will not be able to throw any more balls.
+  /// As soon as the ball is [dispose]d, the actor can throw a new ball.
+  int get max;
+
+  void dispose() {
+    _owner.removeBall(this);
+  }
 
   @override
   List<Object?> get props => [id, speed, radius, damage, image];

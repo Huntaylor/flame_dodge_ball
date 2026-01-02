@@ -13,5 +13,11 @@ class SplitterBall extends Ball {
   double get damage => 8;
 
   @override
+  double get cooldown => 1;
+
+  @override
+  int get max => 3;
+
+  @override
   String get image => BallImages.splitterBall;
 }

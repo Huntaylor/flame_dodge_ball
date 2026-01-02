@@ -13,5 +13,11 @@ class BossBall extends Ball {
   double get damage => 50;
 
   @override
+  double get cooldown => 1;
+
+  @override
+  int get max => 1;
+
+  @override
   String get image => BallImages.bossBall;
 }

@@ -13,5 +13,11 @@ class SpeedBall extends Ball {
   double get damage => 5;
 
   @override
+  double get cooldown => 1;
+
+  @override
+  int get max => 3;
+
+  @override
   String get image => BallImages.speedBall;
 }
