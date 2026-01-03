@@ -25,8 +25,8 @@ class PlayerControllerBehavior extends Behavior<Player>
 
   bool _throw(KeyEvent event) {
     if (event case KeyDownEvent(logicalKey: LogicalKeyboardKey.space)) {
-      parent.stateBehavior.state = PlayerAnimationState.throwing;
-      return parent.actor.throwBall(_nextBall());
+      parent.actor.throwBall(_nextBall());
+      return true;
     }
 
     return false;
@@ -36,6 +36,7 @@ class PlayerControllerBehavior extends Behavior<Player>
     if (event is KeyRepeatEvent) {
       return false;
     }
+
     parent.horizontalMovement = 0;
     parent.verticalMovement = 0;
     final isLeftKeyPressed =
@@ -57,9 +58,9 @@ class PlayerControllerBehavior extends Behavior<Player>
     parent.verticalMovement += isDownKeyPressed ? 1 : 0;
 
     if (parent.horizontalMovement != 0 || parent.verticalMovement != 0) {
-      parent.stateBehavior.state = PlayerAnimationState.running;
+      parent.stateBehavior.state = .running;
     } else {
-      parent.stateBehavior.state = PlayerAnimationState.idle;
+      parent.stateBehavior.state = .idle;
     }
 
     return super.onKeyEvent(event, keysPressed);

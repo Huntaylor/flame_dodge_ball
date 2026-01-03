@@ -2,20 +2,13 @@ import 'dart:async';
 
 import 'package:assets/assets/resources.dart';
 import 'package:flame/components.dart';
-import 'package:flutter/gestures.dart';
-import 'package:ui/src/game/entities/player/player.dart';
 
-class Level extends World with HasGameReference{
+class Level extends World with HasGameReference {
   @override
-  FutureOr<void> onLoad() async{
-    final basketballCourt = PlatformImages.basketballCourt;
+  FutureOr<void> onLoad() async {
+    final image = await game.images.load(PlatformImages.basketballCourt);
 
-    final loadedBasketballCourt =  await game.images.load(basketballCourt);
-  
-    add(SpriteComponent(sprite:Sprite(loadedBasketballCourt ), priority: 1), );
-    // hi
+    add(SpriteComponent(sprite: Sprite(image), priority: 1));
     return super.onLoad();
   }
 }
-
-

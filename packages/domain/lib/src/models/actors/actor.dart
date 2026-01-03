@@ -56,7 +56,7 @@ abstract base class Actor {
     };
   }
 
-  bool throwBall(Ball ball) {
+  Future<bool> throwBall(Ball ball) async {
     if (!_hasSetup) {
       throw Exception('Actor is not setup, cannot throw ball');
     }
@@ -65,8 +65,8 @@ abstract base class Actor {
       return false;
     }
 
+    await _onBallThrown(ball);
     _balls.add(ball);
-    _onBallThrown(ball);
     return true;
   }
 }

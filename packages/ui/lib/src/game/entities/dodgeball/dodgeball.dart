@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:domain/domain.dart';
+import 'package:domain/domain.dart' hide Enemy;
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
@@ -24,6 +24,7 @@ class Dodgeball extends SpriteComponent
     : super(
         position: Vector2(ball.anchor.x, ball.anchor.y),
         size: Vector2.all(ball.radius * 2),
+        priority: 3,
       );
 
   final Ball ball;
@@ -35,7 +36,10 @@ class Dodgeball extends SpriteComponent
     final image = await game.images.load(ball.image);
 
     sprite = Sprite(image);
-    direction.x = 1;
+    direction.x = switch (ball.isEnemy) {
+      true => -1,
+      false => 1,
+    };
 
     add(CircleHitbox(radius: ball.radius, isSolid: true));
 
@@ -75,17 +79,17 @@ class Dodgeball extends SpriteComponent
     super.onCollision(intersectionPoints, other);
   }
 
-  void addTo(World world) {
+  Future<void> addTo(World world) async {
     switch (ball) {
       case SplitterBall():
-        world.add(SplitterDodgeball(this));
+        await world.add(SplitterDodgeball(this));
       case BossBall():
       case EnemyBall():
       case FriendlyBall():
       case GiantBall():
       case RegularBall():
       case SpeedBall():
-        world.add(this);
+        await world.add(this);
     }
   }
 }

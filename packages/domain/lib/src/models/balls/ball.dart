@@ -13,12 +13,17 @@ part 'parts/speed_ball.dart';
 part 'parts/splitter_ball.dart';
 
 sealed class Ball extends Equatable {
-  Ball({required Actor owner}) : id = Id(), _owner = owner, _anchor = null;
+  Ball({required Actor owner})
+    : id = Id(),
+      _owner = owner,
+      _anchor = null,
+      isEnemy = owner is! Me;
 
   Ball._anchor({required Actor owner, required ({double x, double y}) anchor})
     : id = Id(),
       _owner = owner,
-      _anchor = anchor;
+      _anchor = anchor,
+      isEnemy = owner is! Me;
 
   final Actor _owner;
   Id get ownerId => _owner.id;
@@ -30,7 +35,7 @@ sealed class Ball extends Equatable {
     }
 
     return (
-      x: _owner.position.x + (_owner.size.width * .8),
+      x: _owner.position.x,
       y: _owner.position.y + (_owner.size.height * .3),
     );
   }
@@ -41,6 +46,7 @@ sealed class Ball extends Equatable {
   double get damage;
   String get image;
   double get cooldown;
+  final bool isEnemy;
 
   /// The maximum number of balls that can be thrown by the actor.
   ///

@@ -1,8 +1,8 @@
 import 'package:assets/assets.dart';
 import 'package:domain/src/models/actors/actor.dart';
 
-final class Me extends Actor {
-  Me() : super(health: 1);
+final class Enemy extends Actor {
+  Enemy() : super(health: 1);
 
   @override
   String get image => PlayerImages.player1Running;
@@ -11,7 +11,7 @@ final class Me extends Actor {
   String get animation => PlayerAnimations.player1Running;
 
   @override
-  late final ({double height, double width}) size = (height: 64, width: 32);
+  ({double height, double width}) get size => (height: 64, width: 32);
 
   @override
   double get speed => 200;

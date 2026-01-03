@@ -4,9 +4,10 @@ import 'package:assets/assets/resources.dart';
 import 'package:domain/domain.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
+import 'package:ui/src/game/entities/player/core_player.dart';
 import 'package:ui/ui.dart';
 
-class PlayerStateBehavior extends Behavior<Player>
+class PlayerStateBehavior extends Behavior<CorePlayer>
     with HasGameReference<DodgeballGame> {
   PlayerStateBehavior();
 

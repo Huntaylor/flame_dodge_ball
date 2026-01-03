@@ -7,6 +7,7 @@ export 'src/enums/game_state.dart';
 export 'src/enums/music.dart';
 export 'src/enums/player_animation_state.dart';
 export 'src/models/actors/actor.dart';
+export 'src/models/actors/enemy.dart';
 export 'src/models/actors/me.dart';
 export 'src/models/balls/ball.dart';
 export 'src/models/id.dart';
