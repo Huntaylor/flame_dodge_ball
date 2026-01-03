@@ -35,12 +35,14 @@ abstract base class Actor {
 
   final List<Id> _hitByIds = [];
 
-  void getHitBy(Ball ball) {
+  bool getHitBy(Ball ball) {
     if (ball.ownerId == id || _hitByIds.contains(ball.id)) {
-      return;
+      return false;
     }
     _hitByIds.add(ball.id);
     _health -= ball.damage;
+
+    return true;
   }
 
   final List<Ball> _balls = [];

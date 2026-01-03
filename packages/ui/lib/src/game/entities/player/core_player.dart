@@ -51,6 +51,11 @@ abstract class CorePlayer
 
     position.add(displacement);
 
+    if (actor.isDead) {
+      removeFromParent();
+      return;
+    }
+
     _trackPosition();
     super.update(dt);
   }
