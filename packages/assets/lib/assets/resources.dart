@@ -13,6 +13,8 @@ part 'boss_animations.dart';
 
 part 'enemy_sprites.dart';
 
+part 'enemy_animations.dart';
+
 part 'platform_animations.dart';
 
 part 'platform_images.dart';

@@ -7,7 +7,7 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:ui/src/game/entities/enemy/enemy_player.dart';
+import 'package:ui/src/game/entities/enemy/enemy_grunt.dart';
 import 'package:ui/src/game/entities/player/player.dart';
 import 'package:ui/src/game/level/level.dart';
 
@@ -34,7 +34,7 @@ class DodgeballGame extends FlameGame
     player1 = Player(Me(), position: Vector2(gameWidth * .25, gameHeight / 2));
     await world.add(player1);
 
-    final enemy = EnemyPlayer(
+    final enemy = EnemyGrunt(
       Enemy(),
       position: Vector2(gameWidth * .75, gameHeight / 2),
     );
@@ -54,7 +54,7 @@ class DodgeballGame extends FlameGame
     camera = CameraComponent.withFixedResolution(
       width: gameWidth,
       height: gameHeight,
-      world: level,
+      world: world,
       viewfinder: viewfinder,
       hudComponents: [FpsTextComponent(position: Vector2.all(10))],
     );

@@ -6,14 +6,14 @@ import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
 import 'package:ui/ui.dart';
 
-class PlayerStateBehavior extends Behavior<Player>
+class EnemyStateBehavior extends Behavior<EnemyGrunt>
     with HasGameReference<DodgeballGame> {
-  PlayerStateBehavior();
+  EnemyStateBehavior();
 
   late final SpriteAnimation idleAnimation;
   late final SpriteAnimation runningAnimation;
   late final SpriteAnimation throwingAnimation;
-  late final SpriteAnimation throwingAndRunningAnimation;
+  // late final SpriteAnimationComponent throwingAndRunningAnimation;
   late final SpriteAnimation hitAnimation;
 
   @override
@@ -24,34 +24,29 @@ class PlayerStateBehavior extends Behavior<Player>
 
   Future<void> _loadAllAnimations() async {
     idleAnimation = await _spriteAnimation(
-      animationPath: PlayerImages.player1Idle,
-      jsonData: await game.assets.readJson(PlayerAnimations.player1Idle),
+      animationPath: EnemySprites.enemyGruntIdle,
+      jsonData: await game.assets.readJson(EnemyAnimations.enemyGruntIdle),
     );
     throwingAnimation =
         await _spriteAnimation(
-            animationPath: PlayerImages.player1ThrowingCombined,
+            animationPath: EnemySprites.enemyGruntThrowing,
             jsonData: await game.assets.readJson(
-              PlayerAnimations.player1ThrowingCombined,
+              EnemyAnimations.enemyGruntThrowing,
             ),
           )
           ..loop = false;
 
-    throwingAndRunningAnimation =
-        await _spriteAnimation(
-            animationPath: PlayerImages.playerRunningThrowing,
-            jsonData: await game.assets.readJson(
-              PlayerAnimations.playerRunningThrowing,
-            ),
-          )
-          ..loop = false;
-
+    // throwingAndRunningAnimation = await _spriteAnimation(
+    //   animationPath: EnemySprites.player1Running,
+    //   jsonData: await game.assets.readJson(EnemyAnimations.player1Running),
+    // );
     runningAnimation = await _spriteAnimation(
-      animationPath: PlayerImages.player1Running,
-      jsonData: await game.assets.readJson(PlayerAnimations.player1Running),
+      animationPath: EnemySprites.enemyGruntRunning,
+      jsonData: await game.assets.readJson(EnemyAnimations.enemyGruntRunning),
     );
     hitAnimation = await _spriteAnimation(
-      animationPath: PlayerImages.player1Hit,
-      jsonData: await game.assets.readJson(PlayerAnimations.player1Hit),
+      animationPath: EnemySprites.enemyGruntHit,
+      jsonData: await game.assets.readJson(EnemyAnimations.enemyGruntHit),
     );
 
     // List of all animations
@@ -60,7 +55,6 @@ class PlayerStateBehavior extends Behavior<Player>
       ActorAnimationState.running: runningAnimation,
       ActorAnimationState.throwing: throwingAnimation,
       ActorAnimationState.hit: hitAnimation,
-      ActorAnimationState.throwingAndRunning: throwingAndRunningAnimation,
     };
 
     // Set current animation
@@ -68,31 +62,23 @@ class PlayerStateBehavior extends Behavior<Player>
   }
 
   Future<void> changeAnimation(ActorAnimationState state) async {
-    if (state == .throwingAndRunning) {
-      parent.current = state;
-      await parent.animationTicker!.completed;
-      await parent.actor.throwBall(_nextBall());
-    } else if (state == .throwing) {
+    if (state == .throwing) {
       parent.current = state;
       await parent.animationTicker!.completed;
       await parent.actor.throwBall(_nextBall());
     } else if (parent.current == .throwing && parent.animationTicker!.done()) {
       parent.current = state;
-    } else if (parent.current == .throwingAndRunning &&
-        parent.animationTicker!.done()) {
-      parent.current = state;
-    } else if (parent.current != .throwing &&
-        parent.current != .throwingAndRunning) {
+    } else if (parent.current != .throwing) {
       parent.current = state;
     }
   }
 
   Ball _nextBall() {
-    return SpeedBall(owner: parent.actor);
+    // return SpeedBall(owner: parent.actor);
     // return RegularBall(owner: parent.actor);
     // return GiantBall(owner: parent.actor);
     // return FriendlyBall(owner: parent.actor);
-    // return EnemyBall(owner: parent.actor);
+    return EnemyBall(owner: parent.actor);
     // return BossBall(owner: parent.actor);
     // return SplitterBall(owner: parent.actor);
   }

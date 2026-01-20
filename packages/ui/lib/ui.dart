@@ -6,7 +6,7 @@ export 'src/app.dart';
 export 'src/game/components/regular_dodgeball.dart';
 export 'src/game/dodgeball_game.dart';
 export 'src/game/entities/dodgeball/dodgeball.dart';
-export 'src/game/entities/enemy/enemy_player.dart';
+export 'src/game/entities/enemy/enemy_grunt.dart';
 export 'src/game/entities/player/behavior/player_controller_behavior.dart';
 export 'src/game/entities/player/player.dart';
 export 'src/game/level/level.dart';

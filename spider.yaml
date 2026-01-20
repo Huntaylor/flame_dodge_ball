@@ -55,9 +55,12 @@ groups:
     types: [.json]
 
   # enemies
-  - path: assets/sprites/enemies
+  - path: assets/images/enemies
     class_name: EnemySprites
-    types: [.aseprite]
+    types: [.png]
+  - path: assets/animations/enemy
+    class_name: EnemyAnimations
+    types: [.json]
 
   # platform
   - path: assets/animations/platform

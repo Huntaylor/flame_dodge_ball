@@ -1,4 +1,3 @@
-import 'package:domain/domain.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
 import 'package:flutter/src/services/hardware_keyboard.dart';
@@ -19,19 +18,14 @@ class PlayerControllerBehavior extends Behavior<Player>
     return super.onKeyEvent(event, keysPressed);
   }
 
-  Ball _nextBall() {
-    return SpeedBall(owner: parent.actor);
-    // return RegularBall(owner: parent.actor);
-    // return GiantBall(owner: parent.actor);
-    // return FriendlyBall(owner: parent.actor);
-    // return EnemyBall(owner: parent.actor);
-    // return BossBall(owner: parent.actor);
-    // return SplitterBall(owner: parent.actor);
-  }
-
   bool _throw(KeyEvent event) {
     if (event case KeyDownEvent(logicalKey: LogicalKeyboardKey.space)) {
-      parent.actor.throwBall(_nextBall());
+      if (parent.horizontalMovement == 0 && parent.verticalMovement == 0) {
+        parent.stateBehavior.changeAnimation(.throwing);
+      } else {
+        parent.stateBehavior.changeAnimation(.throwingAndRunning);
+      }
+
       return true;
     }
 
@@ -64,10 +58,12 @@ class PlayerControllerBehavior extends Behavior<Player>
     parent.verticalMovement += isDownKeyPressed ? 1 : 0;
 
     if (parent.horizontalMovement != 0 || parent.verticalMovement != 0) {
-      parent.stateBehavior.state = .running;
+      parent.stateBehavior.changeAnimation(.running);
     } else {
-      parent.stateBehavior.state = .idle;
+      parent.stateBehavior.changeAnimation(.idle);
     }
+
+    print(parent.position);
 
     return super.onKeyEvent(event, keysPressed);
   }

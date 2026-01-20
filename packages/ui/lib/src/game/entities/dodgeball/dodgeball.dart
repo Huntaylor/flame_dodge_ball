@@ -6,7 +6,7 @@ import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
 import 'package:flutter/material.dart';
 import 'package:ui/src/game/dodgeball_game.dart';
-import 'package:ui/src/game/entities/player/core_player.dart';
+import 'package:ui/src/game/entities/core_actor.dart';
 
 part 'parts/splitter_ball.dart';
 
@@ -34,7 +34,7 @@ class Dodgeball extends SpriteComponent
   @override
   FutureOr<void> onLoad() async {
     final image = await game.images.load(ball.image);
-
+    position.x = ball.isEnemy ? position.x - 8 : position.x + 16;
     sprite = Sprite(image);
     direction.x = switch (ball.isEnemy) {
       true => -1,
@@ -72,7 +72,7 @@ class Dodgeball extends SpriteComponent
 
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
-    if (other is CorePlayer) {
+    if (other is CoreActor) {
       if (other.actor.getHitBy(ball)) {
         removeFromParent();
       }

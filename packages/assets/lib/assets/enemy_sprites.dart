@@ -4,9 +4,10 @@ part of 'resources.dart';
 class EnemySprites {
   EnemySprites._();
 
-  static const String enemyGrunt = 'sprites/enemies/enemy_grunt.aseprite';
-  static const String enemyGruntHit = 'sprites/enemies/enemy_grunt_hit.aseprite';
-  static const String enemyGruntIdle = 'sprites/enemies/enemy_grunt_idle.aseprite';
-  static const String enemyGruntRunning = 'sprites/enemies/enemy_grunt_running.aseprite';
-  static const String enemyGruntThrowing = 'sprites/enemies/enemy_grunt_throwing.aseprite';
+  static const String enemyGrunt = 'enemies/enemy_grunt.png';
+  static const String enemyGruntHit = 'enemies/enemy_grunt_hit.png';
+  static const String enemyGruntIdle = 'enemies/enemy_grunt_idle.png';
+  static const String enemyGruntRunning = 'enemies/enemy_grunt_running.png';
+  static const String enemyGruntRunningThrowing = 'enemies/enemy_grunt_running_throwing.png';
+  static const String enemyGruntThrowing = 'enemies/enemy_grunt_throwing.png';
 }

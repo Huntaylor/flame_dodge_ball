@@ -16,19 +16,31 @@ class MenuScreen extends StatelessWidget {
       lazy: false,
       child: Scaffold(
         body: SafeArea(
-          child: Column(
-            children: <Widget>[
-              ElevatedButton(
-                onPressed: () {
-                  GameCoordinator.instance.navigate(SettingsRoute());
-                },
-                child: const Text('Settings'),
+          child: Stack(
+            fit: StackFit.expand,
+            alignment: Alignment.center,
+            children: [
+              Image.asset(
+                'assets/images/platform/dodgeball_texture.png',
+                repeat: ImageRepeat.repeat,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  GameCoordinator.instance.navigate(GameRoute());
-                },
-                child: const Text('Game'),
+              Column(
+                spacing: 8,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  ElevatedButton(
+                    onPressed: () {
+                      GameCoordinator.instance.navigate(GameRoute());
+                    },
+                    child: const Text('Play'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      GameCoordinator.instance.navigate(SettingsRoute());
+                    },
+                    child: const Text('Settings'),
+                  ),
+                ],
               ),
             ],
           ),

@@ -1,1 +1,1 @@
-enum PlayerAnimationState { idle, running, throwing, throwingAndRunning, hit }
+enum ActorAnimationState { idle, running, throwing, throwingAndRunning, hit }

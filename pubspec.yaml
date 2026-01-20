@@ -36,16 +36,17 @@ flutter:
   uses-material-design: true
   assets:
     - assets/animations/boss/
+    - assets/animations/enemy/
     - assets/animations/platform/
     - assets/animations/players/
     - assets/audio/
     - assets/images/boss/
     - assets/images/dodge_balls/
+    - assets/images/enemies/
     - assets/images/platform/
     - assets/images/players/
     - assets/sprites/boss/
     - assets/sprites/dodge_balls/
-    - assets/sprites/enemies/
     - assets/sprites/platform/
     - assets/sprites/players/
 
