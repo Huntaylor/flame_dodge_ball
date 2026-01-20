@@ -63,8 +63,6 @@ class PlayerControllerBehavior extends Behavior<Player>
       parent.stateBehavior.changeAnimation(.idle);
     }
 
-    print(parent.position);
-
     return super.onKeyEvent(event, keysPressed);
   }
 }
