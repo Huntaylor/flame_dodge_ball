@@ -4,6 +4,7 @@ import 'dart:ui';
 
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
+import 'package:flame/extensions.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
 import 'package:ui/ui.dart';
 
@@ -16,23 +17,20 @@ class EnemyControllerBehavior extends Behavior<EnemyGrunt>
 
   @override
   FutureOr<void> onLoad() async {
+    final time = rnd.nextIntBetween(1, 4);
+
     throwingTimer = Timer(
-      2,
+      time.toDouble(),
       onTick: () async {
         await parent.stateBehavior.changeAnimation(.throwing);
       },
       repeat: true,
     );
-    // await parent.stateBehavior.changeAnimation(.throwing);
     return super.onLoad();
   }
 
   Future<void> moveEnemy() async {
-    // Value is >= 190 and < 550
-    final randomPosition = Vector2(
-      rnd.nextInt(190) + 360,
-      rnd.nextInt(198) + 32,
-    );
+    final randomPosition = game.enemyArea.randomPoint(random: rnd);
 
     final distance = parent.position.distanceTo(randomPosition);
 
@@ -41,9 +39,14 @@ class EnemyControllerBehavior extends Behavior<EnemyGrunt>
 
     travelTime = clampDouble(travelTime!, 0.5, 2);
 
-    moveEffect = MoveEffect.to(
+    moveEffect = MoveToEffect(
       randomPosition,
       EffectController(duration: travelTime),
+      onComplete: () {
+        parent
+          ..triggerMovement = true
+          ..remove(moveEffect);
+      },
     );
 
     parent.add(moveEffect);

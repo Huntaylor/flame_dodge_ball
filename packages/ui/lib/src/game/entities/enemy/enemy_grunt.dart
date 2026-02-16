@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flame/components.dart';
+import 'package:flame/extensions.dart';
 import 'package:ui/src/game/entities/core_actor.dart';
 import 'package:ui/src/game/entities/enemy/behavior/enemy_controller_behavior.dart';
 import 'package:ui/src/game/entities/enemy/behavior/enemy_state_behavior.dart';
@@ -16,6 +18,8 @@ class EnemyGrunt extends CoreActor {
     );
   }
 
+  final rnd = Random();
+
   late Timer movementTimer;
 
   late final EnemyStateBehavior stateBehavior =
@@ -23,12 +27,18 @@ class EnemyGrunt extends CoreActor {
   late final EnemyControllerBehavior controllerBehavior =
       findBehavior<EnemyControllerBehavior>();
 
+  bool triggerMovement = true;
+
   @override
   FutureOr<void> onLoad() {
+    final time = rnd.nextIntBetween(1, 4);
     movementTimer = Timer(
-      3,
+      time.toDouble(),
       onTick: () {
-        controllerBehavior.moveEnemy();
+        if (triggerMovement) {
+          triggerMovement = false;
+          controllerBehavior.moveEnemy();
+        }
       },
       repeat: true,
     );

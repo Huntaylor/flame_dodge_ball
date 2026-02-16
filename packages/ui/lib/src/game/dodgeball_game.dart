@@ -5,6 +5,7 @@ import 'package:domain/domain.dart';
 import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
+import 'package:flame/experimental.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:ui/src/game/entities/enemy/enemy_grunt.dart';
@@ -22,6 +23,10 @@ class DodgeballGame extends FlameGame
   late Player player1;
   late Level level;
 
+  late Rectangle enemyArea;
+
+  late SpawnComponent enemySpawnComponent;
+
   @override
   Color backgroundColor() {
     return Colors.orange;
@@ -29,18 +34,26 @@ class DodgeballGame extends FlameGame
 
   @override
   FutureOr<void> onLoad() async {
+    enemyArea = Rectangle.fromPoints(
+      Vector2((gameWidth / 2) + 3, 0),
+      Vector2(gameWidth - 32, gameHeight - 64),
+    );
+
+    enemySpawnComponent = SpawnComponent(
+      factory: (i) => EnemyGrunt(Enemy()),
+      /*   ..debugMode = true
+        ..debugColor = Colors.black */
+      period: 0.01,
+      area: enemyArea,
+      spawnCount: 25,
+      spawnWhenLoaded: true,
+    );
+
     await images.loadAllImages();
     _cameraSetup();
     player1 = Player(Me(), position: Vector2(gameWidth * .25, gameHeight / 2));
-    await world.add(player1);
 
-    final enemy = EnemyGrunt(
-      Enemy(),
-      position: Vector2(gameWidth * .75, gameHeight / 2),
-    );
-    await world.add(enemy);
-
-    await _setupLevel();
+    await world.addAll([player1, enemySpawnComponent]);
 
     //Don't add anything after this, blocs are to be setup last
     await _setupBloc();
@@ -59,8 +72,6 @@ class DodgeballGame extends FlameGame
       hudComponents: [FpsTextComponent(position: Vector2.all(10))],
     );
   }
-
-  Future<void> _setupLevel() async {}
 
   Future<void> _setupBloc() async {}
 }

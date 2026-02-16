@@ -5,8 +5,8 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
 import 'package:flutter/material.dart';
-import 'package:ui/src/game/dodgeball_game.dart';
 import 'package:ui/src/game/entities/core_actor.dart';
+import 'package:ui/ui.dart';
 
 part 'parts/splitter_ball.dart';
 
@@ -73,6 +73,9 @@ class Dodgeball extends SpriteComponent
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     if (other is CoreActor) {
+      if (other is EnemyGrunt && ball.isEnemy) {
+        return;
+      }
       if (other.actor.getHitBy(ball)) {
         removeFromParent();
       }
